@@ -29,7 +29,7 @@ class Libro(models.Model):
     )
 
     class Presentacion(models.TextChoices):
-        RDURA = 'TD', _('Tapa dura')
+        TDURA = 'TD', _('Tapa dura')
         TBLANDA = 'TB', _('Tapa blanda')
 
     presentacion = models.CharField(
