@@ -1,43 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>vista carrito</title>
-    </head>
-    <body>
-        <head>
-            <h1>Tu carrito de compras</h1><br/><hr/>
-        </head>
-        <main>
-            <div>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51TMfOSA+ML._SX316_BO1,204,203,200_.jpg" alt="" width="150">
-                <h2>Darwin viene a la ciudad</h2>
-                <a href="">Menno schilthuizen</a><br/>
-                <span><small><b>valor unitario </b></small>$ 50.000</span><br/>
-                <button type="button">+</button>
-                <textarea rows="1" cols="1">1</textarea>
-                <button type="button">-</button><br/><br/>
+{% extends "base.html" %}
 
-                <img src="https://images-na.ssl-images-amazon.com/images/I/51RRYFuqaXL._SX327_BO1,204,203,200_.jpg" alt="" width="150">
-                <h2>El leon y el unicornio y otros ensayos</h2>
-                <a href="">George Orwell</a><br/>
-                <span><small><b>valor unitario </b></small>$ 55.000</span><br/>
-                <button type="button">+</button>
-                <textarea rows="1" cols="1">2</textarea>
-                <button type="button">-</button>
-            </div>
-            <div>
-                <h2>detalles de tu compra</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>
-                    Obcaecati excepturi vel quaerat deleniti cumque,<br/> 
-                    Et, culpa explicabo!</p>
-                <p><b>total</b>     $ 105.000</p>
-            </div>
-        </main>
-        <footer>
+{% load static %}
+{% block head_content %}
+    <title>Home</title>
+    <title>vista carrito</title>
+{% endblock %}
 
-        </footer>
-    </body>
-</html>
+{% block content %}
+    
+    <h1>Tu carrito de compras</h1><br/><hr/>
+    
+    <main>
+        <div>
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51TMfOSA+ML._SX316_BO1,204,203,200_.jpg" alt="" width="150">
+            <h2>Darwin viene a la ciudad</h2>
+            <a href="">Menno schilthuizen</a><br/>
+            <span><small><b>valor unitario </b></small>$ 50.000</span><br/>
+            <button type="button">+</button>
+            <textarea rows="1" cols="1">1</textarea>
+            <button type="button">-</button><br/><br/>
+
+            <img src="https://images-na.ssl-images-amazon.com/images/I/51RRYFuqaXL._SX327_BO1,204,203,200_.jpg" alt="" width="150">
+            <h2>El leon y el unicornio y otros ensayos</h2>
+            <a href="">George Orwell</a><br/>
+            <span><small><b>valor unitario </b></small>$ 55.000</span><br/>
+            <button type="button">+</button>
+            <textarea rows="1" cols="1">2</textarea>
+            <button type="button">-</button>
+        </div>
+        <div>
+            <h2>detalles de tu compra</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>
+                Obcaecati excepturi vel quaerat deleniti cumque,<br/> 
+                Et, culpa explicabo!</p>
+            <p><b>total</b>     $ 105.000</p>
+        </div>
+    </main>
+{% endblock %}

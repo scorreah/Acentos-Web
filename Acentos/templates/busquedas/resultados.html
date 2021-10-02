@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
+
+{% load static %}
+{% block head_content %}
     <title>Resultado</title>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <h2>Resultados de busqueda</h2>
-    <img src="portada.jpg" width="200" height="250">
+    <img src="./../../media/libros/pictures/portada.jpg" width="200" height="250">
     <p> </p>
     <button>Ver detalles</button> <button>Al carrito</button>
     <p>El libro del hacker</p>
     <p>Maria Angeles Caballero y Diego Cilleros</p>
     <p style="color: red;"> 40 euros</p>
-
-    {% if request.user %}
-        <p>{{ request.user }}</p>
-    {% endif %}
-
-</body>
-</html>
+{% endblock %}

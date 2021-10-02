@@ -1,0 +1,38 @@
+{% load static %}
+<!--Navbar-->
+<div class="navbar">
+    <a href="#" class="logo">
+        <div class="imagen-logo">
+            <img src="{% static 'img/Logo Acentos Web.png' %}" class="img">
+        </div>
+    </a>
+    <ul class="nav">
+        <li><a href="#" class="hiperMenu">Inicio</a></li>
+        <li><a href="#" class="hiperMenu">Libros</a></li>
+        <li><a href="#" class="hiperMenu">Solicitudes</a></li>
+        <li><a href="#" class="hiperMenu">Bonos</a></li>
+    </ul>
+    <div class="busquedad-componentes">
+        <div class="barra-busqueda">
+            <a href="#" class="d"><i class="fas fa-search" id="logo-busquedad"></i></a>
+            <input type="text" class="input-busquedad" placeholder="busquedad">
+        </div>
+        <select class="opciones">
+            <option value="Libros">Libros</option>
+            <option value="Autor">Autor</option>
+            <option value="Editorial">Editorial</option>
+        </select>
+    </div>
+    <ul class="nav">
+        <li>
+            <a href="#" class="hiperMenu"><i class="fas fa-user"></i>Usuario</a>
+        </li>
+        <li class="carrito">
+            <a href="#" id="cart" class="hiperMenu">
+                <i class="fa fa-shopping-cart"></i>
+                 <span class="badge">3</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--/.Navbar-->
