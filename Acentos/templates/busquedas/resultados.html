@@ -15,5 +15,9 @@
     <p>Maria Angeles Caballero y Diego Cilleros</p>
     <p style="color: red;"> 40 euros</p>
 
+    {% if request.user %}
+        <p>{{ request.user }}</p>
+    {% endif %}
+
 </body>
 </html>
