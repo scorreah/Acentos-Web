@@ -4,35 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/home.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <title>Home</title>
 </head>
 <body>
-    <div class="Menu">
-        <img src="Direccion" id="logo"/>
-        <div class="nav">
-            <a href="#">Inicio</a>
-            <a href="#">Libros</a>
-            <a href="#">Solicitudes</a>
-            <a href="#">Bonos</a>
-            <div class="campo_busquedad">
-                <select class="comboBox" name="comboBox">
-                    <option value="Libros">Libros</option>
-                    <option value="Autor">Autor</option>
-                    <option value="Editorial">Editorial</option>
-                </select>
-                <input type="text" placeholder="Buscar" name="busqueda" class="busqueda">
-            </div>
-            <div class="boton_acceder_cuenta">
-                <img src="Direccion" id="cuenta"/>
-                <a href="#">Usuario</a>
-            </div>
-            <div class="carrito">
-                <div class="numCarrito">
-                    <p>1</p>
-                </div>
-                <img src="Direccion" id="carrito"/>
-            </div>
-        </div>
-  </div>
+<!--Navbar-->
+	<div class="navbar">
+		<a href="#" class="logo">
+			<div class="imagen-logo">
+				<img src="../../static/img/Logo Acentos Web.png" class="img">
+			</div>
+		</a>
+		<ul class="nav">
+			<li><a href="#" class="hiperMenu">Inicio</a></li>
+			<li><a href="#" class="hiperMenu">Libros</a></li>
+			<li><a href="#" class="hiperMenu">Solicitudes</a></li>
+			<li><a href="#" class="hiperMenu">Bonos</a></li>
+		</ul>
+		<div class="busquedad-componentes">
+			<div class="barra-busqueda">
+				<a href="#" class="d"><i class="fas fa-search" id="logo-busquedad"></i></a>
+				<input type="text" class="input-busquedad" placeholder="busquedad">
+			</div>
+			<select class="opciones">
+				<option value="Libros">Libros</option>
+				<option value="Autor">Autor</option>
+				<option value="Editorial">Editorial</option>
+			</select>
+		</div>
+		<ul class="nav">
+			<li>
+				<a href="#" class="hiperMenu"><i class="fas fa-user"></i>Usuario</a>
+			</li>
+			<li class="carrito">
+				<a href="#" id="cart" class="hiperMenu">
+					<i class="fa fa-shopping-cart"></i>
+					 <span class="badge">3</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+<!--/.Navbar-->
+	<div class="prueba">
+
+	</div>
 </body>
 </html>
