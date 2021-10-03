@@ -13,15 +13,18 @@
         <li><a href="#" class="hiperMenu">Bonos</a></li>
     </ul>
     <div class="busquedad-componentes">
-        <div class="barra-busqueda">
-            <a href="#" class="d"><i class="fas fa-search" id="logo-busquedad"></i></a>
-            <input type="text" class="input-busquedad" placeholder="busquedad">
-        </div>
-        <select class="opciones">
-            <option value="Libros">Libros</option>
-            <option value="Autor">Autor</option>
-            <option value="Editorial">Editorial</option>
-        </select>
+        <form action="{% url 'busquedas:resultados' %}" method="POST">
+            {% csrf_token %}
+            <div class="barra-busqueda">
+                <a href="#" class="d"><i class="fas fa-search" id="logo-busquedad"></i></a>
+                <input type="text" class="input-busquedad" placeholder="busquedad" name="searched">
+            </div>
+            <select class="opciones" name="searchType">
+                <option value="Libros">Libros</option>
+                <option value="Autor">Autor</option>
+                <option value="Editorial">Editorial</option>
+            </select>
+        </form>
     </div>
     <ul class="nav">
         <li>

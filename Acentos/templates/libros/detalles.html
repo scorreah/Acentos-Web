@@ -6,12 +6,14 @@
 
 {% block content %}
     <div>
+        <br> <br> <br> <br>
+        
         <h2>Product</h2>
         <div>
-            <img src="https://images.cdn3.buscalibre.com/fit-in/360x360/2d/02/2d02c3a1e363390b2c3b3f1c897aa234.jpg" alt="">
-            <h1>The Picture of Dorian Gray</h1>
+            <img src="{{ libro.portada.url }}" alt="">
+            <h1> {{ libro.titulo }}</h1>
             <a href="">Oscar Wilde</a>
-            <span>$ 40.000</span>
+            <span>$ {{ libro.precio }}</span>
             <span>20% off | <strike>$ 60.000</strike></span>
             <button type="">Añadir</button>
         </div>
@@ -20,6 +22,7 @@
         </div>
         <aside>
             <h2>Sinopsis</h2>
+            <textarea name="" id="" cols="30" rows="10">{{ libro.sinopsis }}</textarea>
         </aside>
     </div>
     <div>

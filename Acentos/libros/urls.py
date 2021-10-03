@@ -8,7 +8,7 @@ from libros import views
 
 urlpatterns = [
     path(
-        route='detalles/',
+        route='detalles/<str:titulo>/',
         view=views.detalles,
         name='detalles'
     ),
