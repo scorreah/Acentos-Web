@@ -4,36 +4,71 @@
 {% block head_content %}
     <title>Home</title>
     <title>vista carrito</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/carrito.css' %}">
 {% endblock %}
 
 {% block content %}
-    
-    <h1>Tu carrito de compras</h1><br/><hr/>
-    
-    <main>
-        <div>
-            <img src="https://images-na.ssl-images-amazon.com/images/I/51TMfOSA+ML._SX316_BO1,204,203,200_.jpg" alt="" width="150">
-            <h2>Darwin viene a la ciudad</h2>
-            <a href="">Menno schilthuizen</a><br/>
-            <span><small><b>valor unitario </b></small>$ 50.000</span><br/>
-            <button type="button">+</button>
-            <textarea rows="1" cols="1">1</textarea>
-            <button type="button">-</button><br/><br/>
-
-            <img src="https://images-na.ssl-images-amazon.com/images/I/51RRYFuqaXL._SX327_BO1,204,203,200_.jpg" alt="" width="150">
-            <h2>El leon y el unicornio y otros ensayos</h2>
-            <a href="">George Orwell</a><br/>
-            <span><small><b>valor unitario </b></small>$ 55.000</span><br/>
-            <button type="button">+</button>
-            <textarea rows="1" cols="1">2</textarea>
-            <button type="button">-</button>
+    <div class="contenedor-main">
+        <div class="carrito">
+            <div class="items">
+                <div class="item">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/51TMfOSA+ML._SX316_BO1,204,203,200_.jpg">
+                    <div class="informacion-Libro">
+                        <h2 class="titulo">Darwin viene a la ciudad</h2>
+                        <a href="#" class="autor">Menno schilthuizen</a>
+                        <div class="costo">
+                            <div class="especificacion">
+                                <p class="vUnitario">Valor Unitario</p>
+                                <p class="precio-producto">$50.000</p>
+                            </div>
+                            <div class="especificacion">
+                                <p class="vTotal">Valor Total</p>
+                                <p class="precio-producto-total">$50.000</p>
+                            </div>
+                        </div>
+                        <div class="agregarCantidad">
+                            <div class="num-in">
+                                <a herf="#" class="btnAD"><i class="fas fa-minus"></i></a>
+                                <span type="text" class="in-num" value="1" min="1">1</span>
+                                <a herf="#" class="btnAD"><i class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <a href="#" class="btnEliminarLib">
+                                Eliminar
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h2>detalles de tu compra</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br/>
-                Obcaecati excepturi vel quaerat deleniti cumque,<br/> 
-                Et, culpa explicabo!</p>
-            <p><b>total</b>     $ 105.000</p>
+        <div class = "infoCompra">
+            <div class="DetallesTitulo">
+                <h2 class="tituloInfo">Tu carrito</h2>
+                <hr/>
+            </div>
+            <div class="DetallesCarrito">
+                <p>
+                    <span class="Enunciado">Productos</span>
+                    <span>$50.000</span>
+                </p>
+                <p>
+                    <span class="Enunciado">Número de libros</span>
+                    <span>1</span>
+                </p>
+                <p>
+                    <span class="Enunciado">Envio</span>
+                    <span>$8.500</span>
+                </p>    
+                <p>
+                    <span class="Enunciado">Total</span>
+                    <span>$58.500</span>
+                </p>
+            </div>
+            <div class="btnComprar">
+                <a href="#" class="irACompra">Proceder con la compra</a>
+            </div>
         </div>
-    </main>
+    </div>
 {% endblock %}
