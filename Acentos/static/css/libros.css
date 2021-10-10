@@ -34,3 +34,54 @@
     height: 181px;
     width: 115px;
 }
+
+.informacion-Libro{
+    padding-left:20px;
+    width: 100%;
+    position: relative;
+}
+
+.titulo{
+    margin-bottom: 20px;
+    font-family: Muli,sans-serif;
+    font-size: 35px;
+    font-weight: 800px;
+}
+
+.autor{
+    font-family: Muli,sans-serif;
+    font-size: 20px;
+    color:#000;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.autor:hover{
+    color:red;
+}
+
+.costo{
+    text-align: center;
+    font-family: Muli,sans-serif;
+    font-size: 20px;
+    float: right;
+    display:flex;
+}
+
+.vUnitario{
+    font-size: 15px;
+    color:#929aad;
+}
+
+.btnEliminarLib{
+    padding: 10px 10px;
+    background-color: #2378e0;
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn{
+    margin-top:30px;
+}
