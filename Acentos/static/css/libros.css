@@ -1,0 +1,36 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+.contenedor-main{
+    margin: 0 auto;
+    width: 95%;
+    display:flex;
+}
+
+.producto{
+    display: flex;
+    position: relative;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 65%;
+    height: 100%;
+    flex:0.75;
+}
+
+.item{
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-color: rgb(245,245,245,.5);
+}
+
+.item > img{
+    background-color: rgb(0,0,0,.15);
+    padding: 20px;
+    height: 181px;
+    width: 115px;
+}
