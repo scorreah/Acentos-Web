@@ -7,8 +7,8 @@
 
 {% block content %}
     <div class = "contenedor-main">
-        <h2>Product</h2>
         <div class = "producto">
+            <h2>Product</h2>
             <div class="item">
                 <img src="{{ libro.portada.url }}" alt="">
                 <div class="informacion-Libro">
@@ -21,27 +21,26 @@
                             </div>
                         </div>
                         <div class="btn">
-                            <a href="#" class="btnEliminarLib">
+                            <a href="#" class="btnAnadirLibro">
                                 Anadir
                                 <a herf="#" class="btnAD"><i class="fas fa-plus"></i></a>
                             </a>
                         </div>
                     </div>
             </div>
+            <br> </br>
+            <br> </br>
+            <br> </br>
             <div class = "caracteristicas">
                 <h2>Caracteristicas</h2>
-            </div>
-            <div class="sinopsis">
-                <h2>Sinopsis</h2>
-                <textarea name="" id="" cols="30" rows="10">{{ libro.sinopsis }}</textarea> 
+                
             </div>
         </div>
-        <div class="comentarios">
-            <h2>Comentarios</h2>
+        <div class="sinopsis">
+            <h2>Sinopsis</h2>
+            <textarea name="" id="" cols="100" rows="20">{{ libro.sinopsis }}</textarea> 
         </div>
-        <div class="recomendados">
-            <h2>Recomendados</h2>
-        </div>
+        
         
     </div>
         

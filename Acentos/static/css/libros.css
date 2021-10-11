@@ -73,7 +73,7 @@
     color:#929aad;
 }
 
-.btnEliminarLib{
+.btnAnadirLibro{
     padding: 10px 10px;
     background-color: #2378e0;
     color:white;
@@ -84,4 +84,15 @@
 
 .btn{
     margin-top:30px;
+}
+
+.sinopsis{
+    font-family: Muli,sans-serif;
+    font-size: 20px;
+    flex:1;
+    margin-left: 100px;
+    padding:20px;
+    height: 340px;
+    background-color: rgb(245,245,245,.5);
+    width:60%;
 }
