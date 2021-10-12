@@ -1,6 +1,11 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
 .contenedor-main{
     margin: 0 auto;
-    width: 95%;
+    width: 100%;
     display:flex;
 }
 
@@ -13,6 +18,7 @@
     width: 65%;
     height: 100%;
     flex:0.75;
+    margin-left: 45px;
 }
 
 .item{
@@ -26,8 +32,8 @@
 .item > img{
     background-color: rgb(0,0,0,.15);
     padding: 20px;
-    height: 181px;
-    width: 115px;
+    height: 320px;
+    width: 251px;
 }
 
 .informacion-Libro{
@@ -85,9 +91,43 @@
     font-family: Muli,sans-serif;
     font-size: 20px;
     flex:1;
-    margin-left: 100px;
+    margin-left: 70px;
     padding:20px;
     height: 340px;
     background-color: rgb(245,245,245,.5);
-    width:60%;
+    width: 35%;
 }
+
+label{ 
+    color:grey;
+}
+
+label:hover{
+    color:orange;
+}
+
+label:hover ~ label{
+    color:orange;
+}
+
+input[type = "radio"]{ 
+    display:none;
+}
+
+.clasificacion{
+    direction: rtl;/* right to left */
+    unicode-bidi: bidi-override;/* bidi de bidireccional */
+    text-align: left;
+}
+
+input[type = "radio"]:checked ~ label{
+    color:orange;
+}
+
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+    
+}
+
