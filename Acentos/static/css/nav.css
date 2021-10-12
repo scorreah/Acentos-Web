@@ -4,6 +4,9 @@
 }
 
 .navbar{
+    position: fixed;
+    top: 0;
+    overflow:hidden;
     display: flex;
     justify-content: left;
     align-items: center;

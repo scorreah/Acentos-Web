@@ -3,27 +3,70 @@
 {% load static %}
 {% block head_content %}
     <title>Resultado</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/resultados.css' %}">
 {% endblock %}
 
 {% block content %}
-    <br> <br> <br> <br>
     {% if searched %}
-
-        {% for resultado in resultados %}
-            <h1>Resultados para: {{ searched }}</h1>
-            <img src="{{ resultado.portada.url }}" width="200" height="250">
-            
-            <p> </p>
-            <a href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a>
-            <button type="button" name="verDetalles">Ver detalles</button> <button>Al carrito</button>
-            <p>{{ resultado.titulo }}</p>
-            <p>Maria Angeles Caballero y Diego Cilleros</p>
-            
-            <p style="color: red;"> 40 euros</p>
+    <div class ="contenedor-carrousel">
+        <h1>Resultados para: {{ searched }}</h1>
+        <div class ="carrousel">
+            {% for resultado in resultados %}
+                <div class="shadow-item">
+                    <div class="item-carrousel">
+                        <div class="imagenCarrousel">
+                            <img src="{{ resultado.portada.url }}" width="200" height="250">
+                        </div>
+                        <div class="infoItem">
+                            <p>{{ resultado.titulo }}</p>
+                            <p>Maria Angeles Caballero y Diego Cilleros</p>
+                            <a href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a>
+                            <button type="button" name="verDetalles">Ver detalles</button> <button>Al carrito</button>
+                            <p style="color: red;"> 40 euros</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for resultado in resultados %}
+            <div class="shadow-item">
+                <div class="item-carrousel">
+                    <div class="imagenCarrousel">
+                        <img src="{{ resultado.portada.url }}" width="200" height="250">
+                    </div>
+                    <div class="infoItem">
+                        <p>{{ resultado.titulo }}</p>
+                        <p>Maria Angeles Caballero y Diego Cilleros</p>
+                        <a href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a>
+                        <button type="button" name="verDetalles">Ver detalles</button> <button>Al carrito</button>
+                        <p style="color: red;"> 40 euros</p>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
+        {% for resultado in resultados %}
+        <div class="shadow-item">
+            <div class="item-carrousel">
+                <div class="imagenCarrousel">
+                    <img src="{{ resultado.portada.url }}" width="200" height="250">
+                </div>
+                <div class="infoItem">
+                    <p>{{ resultado.titulo }}</p>
+                    <p>Maria Angeles Caballero y Diego Cilleros</p>
+                    <a href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a>
+                    <button type="button" name="verDetalles">Ver detalles</button> <button>Al carrito</button>
+                    <p style="color: red;"> 40 euros</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        </div>
+    </div>
     {% else %} 
         <center>
             <h1>Upss... olvidaste ingresar una busqueda</h1>
         </center>
     {% endif %}
+    <div class="prueba">
+        
+    </div>
 {% endblock %}

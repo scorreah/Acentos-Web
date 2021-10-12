@@ -12,8 +12,7 @@
         <li><a href="#" class="hiperMenu">Solicitudes</a></li>
         <li><a href="#" class="hiperMenu">Bonos</a></li>
     </ul>
-    <div class="busquedad-componentes">
-        <form action="{% url 'busquedas:resultados' %}" method="POST">
+        <form action="{% url 'busquedas:resultados' %}" method="POST" class="busquedad-componentes">
             {% csrf_token %}
             <div class="barra-busqueda">
                 <a href="#" class="d"><i class="fas fa-search" id="logo-busquedad"></i></a>
@@ -25,7 +24,6 @@
                 <option value="Editorial">Editorial</option>
             </select>
         </form>
-    </div>
     <ul class="nav">
         <li>
             <a href="#" class="hiperMenu"><i class="fas fa-user"></i>Usuario</a>
