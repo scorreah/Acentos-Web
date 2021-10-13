@@ -26,7 +26,7 @@
                             <br>
                             <br>
                             <br>
-                            <a class="button" href="Quiensabecomosehace">Agregar al carrito</a>
+                            <a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a>
                         </div>
                         <img src="{{ resultado.portada.url }}">
                     </div>
@@ -42,9 +42,27 @@
         </div>
     </div>
     {% else %} 
-        <center>
-            <h1>Upss... olvidaste ingresar una busqueda</h1>
-        </center>
+        {% for resultado in resultados %}
+                <div class="card">
+                    <div class="card_image_container">
+                        <div class="linksBTN">
+                            <a class="button" href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a>
+                            <br>
+                            <br>
+                            <br>
+                            <a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a>
+                        </div>
+                        <img src="{{ resultado.portada.url }}">
+                    </div>
+                    <div class="card_content">
+                        <h2 class="card_title">{{ resultado.titulo }}</h2>
+                        <div class="card_info">
+                            <h4 class="autores">{{resultado.editorial}}</h4>
+                            <h3 class="precio"> {{resultado.precio}} COP</h3>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
     {% endif %}
 </div>
 {% endblock %}

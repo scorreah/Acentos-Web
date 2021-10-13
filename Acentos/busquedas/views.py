@@ -25,4 +25,8 @@ def resultados(request):
             template_name="busquedas/resultados.html", 
             context={'searched': searched, 'searchType': searchType, 'resultados': libros })
     else:
-        return render(request=request, template_name="busquedas/resultados.html")
+        libros = Libro.objects.filter(titulo__icontains=' ')
+        return render(
+            request=request, 
+            template_name="busquedas/resultados.html", 
+            context={'searched': ' ', 'searchType': 'Libro', 'resultados': libros })
