@@ -102,14 +102,6 @@ label{
     color:grey;
 }
 
-label:hover{
-    color:orange;
-}
-
-label:hover ~ label{
-    color:orange;
-}
-
 input[type = "radio"]{ 
     display:none;
 }

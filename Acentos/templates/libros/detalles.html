@@ -12,12 +12,12 @@
             <div class="item">
                 <img src="{{ libro.portada.url }}" alt="">
                 <div class="informacion-Libro">
-                        <h2 class="titulo">El libro del hacker</h2>
+                        <h2 class="titulo">{{ libro.titulo }}</h2>
                         <a href="#" class="autor">Yo no se quien</a>
                         <div class="costo">
                             <div class="especificacion">
                                 <p class="vUnitario">Valor Unitario</p>
-                                <p class="precio-producto">$40.000</p>
+                                <p class="precio-producto">{{ libro.precio }} COP</p>
                             </div>
                         </div>
                         <div class="btn">
@@ -28,27 +28,33 @@
                     </div>
             </div>
             <br> </br>
-            <div class = "caracteristicas">
+            <div class = "caracteristicas-main">
                 <h2>Caracteristicas</h2>
+                <div class="caracteristicas">
+                    <p>Editorial: {{libro.editorial}}</p>
+                    <p>Edicion: {{libro.edicion}}</p>
+                    <p>Nro. paginas: {{libro.noPaginas}}</p>
+                    <p>Presentacion: {{libro.presentacion}}</p>
                 
+                </div>
             </div>
         </div>
         <div class="sinopsis">
             <h2>Sinopsis</h2>
             <textarea name="" id="" cols="60" rows="13">{{ libro.sinopsis }}</textarea> 
             <br> </br>
-            <h3>Puntuacion general</h3>
+            <h3>Puntuacion general: {{libro.puntuacion}}</h3>
             <form>
                 <p class="clasificacion">
-                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                    <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
                     --><label for="radio1">★</label><!--
-                    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                    --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
                     --><label for="radio2">★</label><!--
-                    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                    --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
                     --><label for="radio3">★</label><!--
-                    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                    --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
                     --><label for="radio4">★</label><!--
-                    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                    --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
                     --><label for="radio5">★</label>
                 </p>
             </form>
