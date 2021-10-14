@@ -59,8 +59,96 @@
                 </p>
             </form>
         </div>
-        
-        
     </div>
+    <br> </br>
+    <div class="recomendado"> 
+        <p> A continuacion te recomendamos libros de la misma editorial {{libro.editorial}}</p>
+        <div class ="contenedor-carrousel">
+        <div class ="cards">
+            {% for resultado in recomendados %}
+                <div class="card">
+                    <div class="card-overlay">
+                        <div class="linksBTN">
+                            <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=resultado.url_libro%}">Ver detalles</a></div>
+                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <div class="card_title">{{ resultado.titulo }}</div>
+                        <div class="card_autores">{{resultado.editorial}}</div>
+                        <div class="card_precio"> {{resultado.precio}} COP</div>
+                    </div>
+                    <img class="card-poster" alt="" src="{{ resultado.portada.url }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="comentarios">
+        <h1>Comentarios</h1>
+        
+       <!-- comments container -->
+		<div class="comment_block">
+
+		 <!-- used by #{user} to create a new comment -->
+		 <div class="create_new_comment">
+
+			<!-- current #{user} avatar -->
+		 	<div class="user_avatar">
+		 		<img src="{%static 'img/perfil.png'%}" class="imglol">
+		 	</div><!-- the input field --><div class="input_comment">
+		 		<input type="text" placeholder="Join the conversation..">
+		 	</div>
+
+		 </div>
+
+
+		 <!-- new comment -->
+		 <div class="new_comment">
+
+			<!-- build comment -->
+		 	<ul class="user_comment">
+
+		 		<!-- current #{user} avatar -->
+			 	<div class="user_avatar">
+			 		<img src="{%static 'img/perfil.png'%}" class="imglol">
+			 	</div><!-- the comment body --><div class="comment_body">
+			 		<p>Gastropub cardigan jean shorts, kogi Godard PBR&B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+			 	</div>
+
+			 	<!-- comments toolbar -->
+			 	<div class="comment_toolbar">
+
+			 		<!-- inc. date and time -->
+			 		<div class="comment_details">
+			 			<ul>
+			 				<li><i class="fa fa-clock-o"></i> 13:94</li>
+			 				<li><i class="fa fa-calendar"></i> 04/01/2015</li>
+			 				<li><i class="fa fa-pencil"></i> <span class="user">John Smith</span></li>
+			 			</ul>
+			 		</div><!-- inc. share/reply and love --><div class="comment_tools">
+			 			<ul>
+			 				<input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                            --><label for="radio1">★</label><!--
+                            --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                            --><label for="radio2">★</label><!--
+                            --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                            --><label for="radio3">★</label><!--
+                            --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                            --><label for="radio4">★</label><!--
+                            --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                            --><label for="radio5">★</label>
+			 			</ul>
+			 		</div>
+
+			 	</div>
+
+			 	
+		 	</ul>
+
+		 
+		</div>
+
+    </div>
+</div>
         
 {% endblock %}

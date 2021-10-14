@@ -15,14 +15,19 @@
     <div class ="contenedor-carrousel">
         <h1>Resultados para: {{ searched }}</h1>
         <div class="ordenar">
-            
+            <h2>Ordenar</h2>
+            <select class="opciones" name="orderType">
+                <option value="Alf">Alafabeticamente</option>
+                <option value="Ran">Mejores puntuados</option>
+                <option value="Fec">Fecha de lanzamiento</option>
+            </select>
         </div>
         <div class ="cards">
             {% for resultado in resultados %}
                 <div class="card">
                     <div class="card-overlay">
                         <div class="linksBTN">
-                            <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a></div>
+                            <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=resultado.url_libro%}">Ver detalles</a></div>
                             <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
                         </div>
                     </div>
