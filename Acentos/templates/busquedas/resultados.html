@@ -16,11 +16,14 @@
         <h1>Resultados para: {{ searched }}</h1>
         <div class="ordenar">
             <h2>Ordenar</h2>
+            <form action="{% url 'busquedas:resultados' %}" method="POST" class="busquedad-componentes">
+            {% csrf_token %}
             <select class="opciones" name="orderType">
                 <option value="Alf">Alafabeticamente</option>
                 <option value="Ran">Mejores puntuados</option>
                 <option value="Fec">Fecha de lanzamiento</option>
             </select>
+        </form>
         </div>
         <div class ="cards">
             {% for resultado in resultados %}

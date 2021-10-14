@@ -12,7 +12,7 @@ def detalles(request, titulo):
     libro = Libro.objects.filter(url_libro__exact=titulo)
     libro = list(libro.values())
     libro = libro[0]
-    recomendados = Libro.objects.filter(editorial__icontains=libro['editorial'])
+    recomendados = Libro.objects.filter(editorial__icontains=libro['editorial']).exclude(url_libro__exact=titulo)
 
     return render(
         request=request, 
