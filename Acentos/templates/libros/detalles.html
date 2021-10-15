@@ -10,7 +10,7 @@
         
         <h2>Product</h2>
         <div>
-            <img src="{{ libro.portada.url }}" alt="">
+            <img src="{{ libro.portada }}" alt="">
             <h1> {{ libro.titulo }}</h1>
             <a href="">Oscar Wilde</a>
             <span>$ {{ libro.precio }}</span>
@@ -19,10 +19,11 @@
         </div>
         <div>
             <h2>Caracteristicas</h2>
+            
         </div>
         <aside>
             <h2>Sinopsis</h2>
-            <textarea name="" id="" cols="30" rows="10">{{ libro.sinopsis }}</textarea>
+            <textarea name="" id="" cols="30" rows="10" readonly="">{{ libro.sinopsis }}</textarea>
         </aside>
     </div>
     <div>
