@@ -3,27 +3,49 @@
 {% load static %}
 {% block head_content %}
     <title>Resultado</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/resultados.css' %}">
 {% endblock %}
 
 {% block content %}
-    <br> <br> <br> <br>
-    {% if searched %}
+<div class="busquedad">
+    <div class="filtros">
 
-        {% for resultado in resultados %}
-            <h1>Resultados para: {{ searched }}</h1>
-            <img src="{{ resultado.portada.url }}" width="200" height="250">
-            
-            <p> </p>
-            <a href="{% url 'libros:detalles' titulo=resultado.url_libro %}">Ver detalles</a>
-            <button type="button" name="verDetalles">Ver detalles</button> <button>Al carrito</button>
-            <p>{{ resultado.titulo }}</p>
-            <p>Maria Angeles Caballero y Diego Cilleros</p>
-            
-            <p style="color: red;"> 40 euros</p>
-        {% endfor %}
+    </div>
+    {% if searched %}
+    <div class ="contenedor-carrousel">
+        <h1>Resultados para: {{ searched }}</h1>
+        <div class="ordenar">
+            <h2>Ordenar</h2>
+            <form action="{% url 'busquedas:resultados' %}" method="POST" class="busquedad-componentes">
+            {% csrf_token %}
+            <select class="opciones" name="orderType">
+                <option value="Alf">Alafabeticamente</option>
+                <option value="Ran">Mejores puntuados</option>
+                <option value="Fec">Fecha de lanzamiento</option>
+            </select>
+        </form>
+        </div>
+        <div class ="cards">
+            {% for resultado in resultados %}
+                <div class="card">
+                    <div class="card-overlay">
+                        <div class="linksBTN">
+                            <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=resultado.url_libro%}">Ver detalles</a></div>
+                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
+                        </div>
+                    </div>
+                    <div class="card_content">
+                        <div class="card_title">{{ resultado.titulo }}</div>
+                        <div class="card_autores">{{resultado.editorial}}</div>
+                        <div class="card_precio"> {{resultado.precio}} COP</div>
+                    </div>
+                    <img class="card-poster" alt="" src="{{ resultado.portada.url }}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
     {% else %} 
-        <center>
-            <h1>Upss... olvidaste ingresar una busqueda</h1>
-        </center>
+        
     {% endif %}
+</div>
 {% endblock %}

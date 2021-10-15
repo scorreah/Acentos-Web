@@ -7,7 +7,6 @@ from django.shortcuts import render
 from libros.models import Libro
 
 # Create your views here.
-
 def resultados(request):
     """vista resultados"""
     if request.method == "POST":
@@ -25,4 +24,9 @@ def resultados(request):
             template_name="busquedas/resultados.html", 
             context={'searched': searched, 'searchType': searchType, 'resultados': libros })
     else:
-        return render(request=request, template_name="busquedas/resultados.html")
+        libros = Libro.objects.filter(titulo__icontains=' ')
+        return render(
+            request=request, 
+            template_name="busquedas/resultados.html", 
+            context={'searched': ' ', 'searchType': 'Libro', 'resultados': libros })
+
