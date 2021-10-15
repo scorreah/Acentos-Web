@@ -44,6 +44,7 @@
             <textarea name="" id="" cols="60" rows="13">{{ libro.sinopsis }}</textarea> 
             <br> </br>
             <h3>Puntuacion general: {{libro.puntuacion}}</h3>
+            {% if libro.puntuacion == 0.0%}
             <form>
                 <p class="clasificacion">
                     <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
@@ -58,6 +59,88 @@
                     --><label for="radio5">★</label>
                 </p>
             </form>
+            {%endif%}
+            {% if libro.puntuacion == 1.0%}
+            <form>
+                <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                    --><label for="radio1">★</label><!--
+                    --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                    --><label for="radio2">★</label><!--
+                    --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                    --><label for="radio3">★</label><!--
+                    --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                    --><label for="radio4">★</label><!--
+                    --><input id="radio5" type="radio" name="estrellas" value="1"  checked disabled><!--
+                    --><label for="radio5">★</label>
+                </p>
+            </form>
+            {%endif%}
+            {% if libro.puntuacion == 2.0%}
+            <form>
+                <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                    --><label for="radio1">★</label><!--
+                    --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                    --><label for="radio2">★</label><!--
+                    --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                    --><label for="radio3">★</label><!--
+                    --><input id="radio4" type="radio" name="estrellas" value="2" checked disabled><!--
+                    --><label for="radio4">★</label><!--
+                    --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                    --><label for="radio5">★</label>
+                </p>
+            </form>
+            {%endif%}
+            {% if libro.puntuacion == 3.0%}
+            <form>
+                <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                    --><label for="radio1">★</label><!--
+                    --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                    --><label for="radio2">★</label><!--
+                    --><input id="radio3" type="radio" name="estrellas" value="3" checked disabled><!--
+                    --><label for="radio3">★</label><!--
+                    --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                    --><label for="radio4">★</label><!--
+                    --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                    --><label for="radio5">★</label>
+                </p>
+            </form>
+            {%endif%}
+            {% if libro.puntuacion == 4.0%}
+            <form>
+                <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                    --><label for="radio1">★</label><!--
+                    --><input id="radio2" type="radio" name="estrellas" value="4" checked disabled><!--
+                    --><label for="radio2">★</label><!--
+                    --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                    --><label for="radio3">★</label><!--
+                    --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                    --><label for="radio4">★</label><!--
+                    --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                    --><label for="radio5">★</label>
+                </p>
+            </form>
+            {%endif%}
+            {% if libro.puntuacion == 5.0%}
+            <form>
+                <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5" checked disabled><!--
+                    --><label for="radio1">★</label><!--
+                    --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                    --><label for="radio2">★</label><!--
+                    --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                    --><label for="radio3">★</label><!--
+                    --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                    --><label for="radio4">★</label><!--
+                    --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                    --><label for="radio5">★</label>
+                </p>
+            </form>
+            {%endif%}
+        
         </div>
     </div>
     <br> </br>

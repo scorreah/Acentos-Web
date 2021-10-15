@@ -6,9 +6,12 @@ from django.shortcuts import render
 # Models
 from libros.models import Libro
 
+libros = ""
+
 # Create your views here.
 def resultados(request):
     """vista resultados"""
+    global libros
     if request.method == "POST":
         searched = request.POST['searched']
         searchType = request.POST.get('searchType', "Libros")
@@ -18,15 +21,30 @@ def resultados(request):
             pass
         elif searchType == "Editorial":
             libros = Libro.objects.filter(editorial__icontains=searched)
-        
+
         return render(
             request=request, 
             template_name="busquedas/resultados.html", 
             context={'searched': searched, 'searchType': searchType, 'resultados': libros })
     else:
-        libros = Libro.objects.filter(titulo__icontains=' ')
+        libros = Libro.objects.all()
         return render(
             request=request, 
             template_name="busquedas/resultados.html", 
             context={'searched': ' ', 'searchType': 'Libro', 'resultados': libros })
 
+def ordenar(request):
+    global libros
+    if request.method == "POST":
+        orderType = request.POST.get('orderType')
+        if orderType == "Alf":
+            libros = libros.order_by('titulo')
+        if orderType == "Ran":
+            libros = libros.order_by('puntuacion').reverse()
+        if orderType == "Fec":
+            pass
+    return render(
+        request=request, 
+        template_name="busquedas/resultados.html",
+        context={'orderType': orderType, 'resultados': libros}
+    )

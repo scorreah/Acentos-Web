@@ -10,5 +10,10 @@ urlpatterns = [
         route= "resultados/",
         view= views.resultados,
         name= "resultados",
+    ),
+    path(
+        route= "resultados/a",
+        view= views.ordenar,
+        name= "ordenar",
     )
 ]
