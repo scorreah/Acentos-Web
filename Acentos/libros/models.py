@@ -41,6 +41,8 @@ class Libro(models.Model):
 
     url_libro = models.CharField(max_length=80, blank=True)
 
+    fecha_publicacion = models.DateField()
+
     class Meta:
         db_table = "Libro"
 
