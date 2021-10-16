@@ -40,3 +40,24 @@ class Libro(models.Model):
     )
 
     url_libro = models.CharField(max_length=80, blank=True)
+
+    class Meta:
+        db_table = "Libro"
+
+class Autor(models.Model):
+    nombre = models.CharField(max_length=80, null=False)
+    biografia = models.TextField(null=True, blank=True)
+    fechaNacimiento = models.DateField()
+
+    libros = models.ManyToManyField(Libro)
+    class Meta:
+        db_table = "Autor"
+
+class Resena(models.Model):
+    comentario = models.CharField(max_length=280, null=True, blank=True)
+    puntuacion = models.FloatField(null=True, blank=True)
+
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        db_table = "Resena"
