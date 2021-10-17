@@ -168,13 +168,10 @@
     </div>
     <div class="comentarios">
         <h1>Comentarios</h1>
-        
        <!-- comments container -->
 		<div class="comment_block">
-
 		 <!-- used by #{user} to create a new comment -->
 		 <div class="create_new_comment">
-
 			<!-- current #{user} avatar -->
 		 	<div class="user_avatar">
 		 		<img src="{%static 'img/perfil.png'%}" class="img_comment">
@@ -184,9 +181,9 @@
 
 		 </div>
 
-
+        {%for comentarios in comentarios %}
 		 <!-- new comment -->
-		 <div class="new_comment">
+		<div class="new_comment">
 
 			<!-- build comment -->
 		 	<ul class="user_comment">
@@ -195,7 +192,7 @@
 			 	<div class="user_avatar">
 			 		<img src="{%static 'img/perfil.png'%}" class="img_comment">
 			 	</div><!-- the comment body --><div class="comment_body">
-			 		<p>Gastropub cardigan jean shorts, kogi Godard PBR&B lo-fi locavore. Organic chillwave vinyl Neutra. Bushwick Helvetica cred freegan, crucifix Godard craft beer deep v mixtape cornhole Truffaut master cleanse pour-over Odd Future beard. Portland polaroid iPhone.</p>
+			 		<p>{{comentarios.comentario}}</p>
 			 	</div>
 
 			 	<!-- comments toolbar -->
@@ -208,18 +205,104 @@
 			 				<li class="li_comment"><i class="fa fa-calendar"></i> 04/01/2015</li>
 			 				<li class="li_comment"><i class="fa fa-pencil"></i> <span class="user">John Smith</span></li>
 			 			</ul>
-			 		</div><!-- inc. share/reply and love --><div class="comment_tools">
+			 		</div><div class="comment_tools">
 			 			<ul>
-			 				<input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
-                            --><label for="radio1">★</label><!--
-                            --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
-                            --><label for="radio2">★</label><!--
-                            --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
-                            --><label for="radio3">★</label><!--
-                            --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
-                            --><label for="radio4">★</label><!--
-                            --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
-                            --><label for="radio5">★</label>
+			 				{% if comentarios.puntuacion == 0.0%}
+                                <form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                                        --><label for="radio1">★</label><!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                                        --><label for="radio2">★</label><!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                                        --><label for="radio3">★</label><!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                                        --><label for="radio4">★</label><!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                                        --><label for="radio5">★</label>
+                                    </p>
+                                </form>
+                                {%endif%}
+                                {% if comentarios.puntuacion == 1.0%}
+                                <form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                                        --><label for="radio1">★</label><!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                                        --><label for="radio2">★</label><!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                                        --><label for="radio3">★</label><!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                                        --><label for="radio4">★</label><!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1"  checked disabled><!--
+                                        --><label for="radio5">★</label>
+                                    </p>
+                                </form>
+                                {%endif%}
+                                {% if comentarios.puntuacion == 2.0%}
+                                <form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                                        --><label for="radio1">★</label><!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                                        --><label for="radio2">★</label><!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                                        --><label for="radio3">★</label><!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2" checked disabled><!--
+                                        --><label for="radio4">★</label><!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                                        --><label for="radio5">★</label>
+                                    </p>
+                                </form>
+                                {%endif%}
+                                {% if comentarios.puntuacion == 3.0%}
+                                <form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                                        --><label for="radio1">★</label><!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                                        --><label for="radio2">★</label><!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3" checked disabled><!--
+                                        --><label for="radio3">★</label><!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                                        --><label for="radio4">★</label><!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                                        --><label for="radio5">★</label>
+                                    </p>
+                                </form>
+                                {%endif%}
+                                {% if comentarios.puntuacion == 4.0%}
+                                <form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5" disabled><!--
+                                        --><label for="radio1">★</label><!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4" checked disabled><!--
+                                        --><label for="radio2">★</label><!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                                        --><label for="radio3">★</label><!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                                        --><label for="radio4">★</label><!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                                        --><label for="radio5">★</label>
+                                    </p>
+                                </form>
+                                {%endif%}
+                                {% if comentarios.puntuacion == 5.0%}
+                                <form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5" checked disabled><!--
+                                        --><label for="radio1">★</label><!--
+                                        --><input id="radio2" type="radio" name="estrellas" value="4" disabled><!--
+                                        --><label for="radio2">★</label><!--
+                                        --><input id="radio3" type="radio" name="estrellas" value="3" disabled><!--
+                                        --><label for="radio3">★</label><!--
+                                        --><input id="radio4" type="radio" name="estrellas" value="2" disabled><!--
+                                        --><label for="radio4">★</label><!--
+                                        --><input id="radio5" type="radio" name="estrellas" value="1" disabled><!--
+                                        --><label for="radio5">★</label>
+                                    </p>
+                                </form>
+                                {%endif%}
 			 			</ul>
 			 		</div>
 
@@ -230,6 +313,7 @@
 
 		 
 		</div>
+        {% endfor %}
 
     </div>
 </div>
