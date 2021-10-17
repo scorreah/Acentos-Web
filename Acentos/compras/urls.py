@@ -11,4 +11,9 @@ urlpatterns = [
         view=views.carrito,
         name='carrito'
     ),
+    path(
+        route= 'compra',
+        view= views.compra,
+        name= 'compra',
+    )
 ]

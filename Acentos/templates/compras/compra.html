@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block head_content %}
+    <title>Compra</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/compra.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="seccion">
+        <div class="row">
+            <div class="col-50">
+            <div class="container">
+                <form action="/action_page.php">
+                <div class="row">
+                    <div class="col-75">
+                    <label for="fname" class="Txt"><i class="fa fa-user"></i> Nombre del comprador</label>
+                    <input type="text" class="camposT" name="firstname" placeholder="Nombre completo">
+                    <label for="Télefono" class="Txt"><i class="fas fa-mobile-alt"></i> Télefono</label>
+                    <input type="text" class="camposT" name="Teléfono de contacto" placeholder="Télefono de contacto">
+                    <div class="row">
+                        <div class="col-25">
+                        <label for="city" class="Txt">Departamento</label>
+                        <input type="text" class="camposT" name="departamento" placeholder="Tú departamento actual">
+                        <label for="state" class="Txt">Ciudad</label>
+                        <input type="text" class="camposT" name="ciudad" placeholder="Tú ciudad actual">
+                        </div>
+                        <div class="col-25">
+                        <label for="zip" class="Txt">Código postal</label>
+                        <input type="text" class="camposT" name="código postal" placeholder="Tú código postal">
+                        <label for="adr" class="Txt"><i class="fa fa-address-card-o"></i> Dirección</label>
+                        <input type="text" class="camposT" name="address" placeholder="Tú dirección">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <h3>Método de pago</h3>
+                <label for="fname" id="MDP">Métodos disponibles</label>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <label class="Txt">
+                        <input type="checkbox" name="MDP" value="opcionTC"> Pago con tarjeta credito
+                        <i class="fas fa-credit-card" style="color:#FA9400"></i>
+                    </label>
+                    <label class="Txt">
+                        <input type="checkbox" name="MDP" value="opcionCE"> Pago contra entrega
+                        <i class="fas fa-money-bill-wave" style="color:green;"></i>
+                    </label>
+                    <label class="Txt">
+                        <input type="checkbox" name="MDP" value="opcionTD"> Pago con tarjeta débito
+                        <i class="fas fa-money-check" style="color:#FA3500"></i>
+                    </label>
+                    <label class="Txt">
+                        <input type="checkbox" name="MDP" value="opcionPP"> Pago por Paypal
+                        <i class="fab fa-cc-paypal" style="color:blue;"></i> 
+                    </label>
+                </form>
+                <input type="submit" value="Realizar compra" class="btn">
+                <!-- Info pa la tarjeta, no sé como implmentarla aún.
+                                <div class="col-50">
+                    <label for="cname">Nombre del responsable</label>
+                    <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                    <label for="ccnum">Número de tarjeta</label>
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                    <div class="row">
+                    <div class="col-50">
+                        <label for="expyear">Exp Year</label>
+                        <select name='expireMM' id='expireMM'>
+                        <option value='01'>1</option>
+                        <option value='02'>2</option>
+                        <option value='03'>3</option>
+                        <option value='04'>4</option>
+                        <option value='05'>5</option>
+                        <option value='06'>6</option>
+                        <option value='07'>7</option>
+                        <option value='08'>8</option>
+                        <option value='09'>9</option>
+                        <option value='10'>10</option>
+                        <option value='11'>11</option>
+                        <option value='12'>12</option>
+                    </select> 
+                    <select name='expireYY' id='expireYY'>
+                        <option value='20'>2020</option>
+                        <option value='21'>2021</option>
+                        <option value='22'>2022</option>
+                        <option value='23'>2023</option>
+                        <option value='24'>2024</option>
+                        <option value='25'>2025</option>
+                        <option value='26'>2026</option>
+                        <option value='27'>2027</option>
+                    </select> 
+                    </div>
+                    <div class="col-50">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="352">
+                    </div>
+                    </div>
+                </div>
+                -->
+            </div>
+            </div>
+            <div class="col-25">
+            <div class="container">
+                <h4 style="color:#2378e0; margin-bottom: 10px; padding-top: 20px;">Mi carrito
+                <span class="price" style="color:black;">
+                    <i class="fa fa-shopping-cart"></i>
+                    <b>4</b>
+                </span>
+                </h4>
+                <p class="items">Product 1<span class="price">15.000 COP</span></p>
+                <p class="items">Impuestos<span class="price">5.000 COP</span></p>
+                <p class="items">Costo de envio<span class="price">8.000 COP</span></p>
+                <hr>
+                <p class="itemsTotal">Total <span class="price" style="color:black"><b>28.000 COP</b></span></p>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
