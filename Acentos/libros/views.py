@@ -12,7 +12,29 @@ def detalles(request, titulo):
     """Muestra los detalles de un libro."""
     if request.method == 'POST':
         libroInstance = Libro.objects.get(url_libro__exact=titulo)
-        newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion='3.0',libro=libroInstance)
+        aux = 0.0
+        try:
+            if request.POST['estrellas5']:
+                aux = 5.0
+        except:
+            try:
+                if request.POST['estrellas4']:
+                    aux = 4.0
+            except:
+                try:
+                    if request.POST['estrellas3']:
+                        aux = 3.0
+                except:
+                    try:
+                        if request.POST['estrellas2']:
+                            aux = 2.0
+                    except:
+                        try:
+                            if request.POST['estrellas1']:
+                                aux = 1.0
+                        except:
+                            pass
+        newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion=aux,libro=libroInstance)
         newComent.save()
     libro = Libro.objects.filter(url_libro__exact=titulo)
     libro = list(libro.values())
