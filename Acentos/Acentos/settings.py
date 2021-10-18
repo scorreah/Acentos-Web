@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-woso^9ks+*0zb3ghrhijs^$m9eu_6#_g0b!)a%=p+h(of3*0@5
 DEBUG = True
 
 ALLOWED_HOSTS = []
+"""Si se quiere ver el error 404 comentar la linea de arriba, descomentar la de abajo y poner el DEBUG de arriba en true"""
+#ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition

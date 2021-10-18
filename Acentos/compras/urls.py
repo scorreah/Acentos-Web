@@ -12,7 +12,7 @@ urlpatterns = [
         name='carrito'
     ),
     path(
-        route= 'compra',
+        route= 'compra/',
         view= views.compra,
         name= 'compra',
     )

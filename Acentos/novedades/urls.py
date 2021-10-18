@@ -12,4 +12,5 @@ urlpatterns = [
         view=views.home,
         name='home'
     ),
+
 ]
