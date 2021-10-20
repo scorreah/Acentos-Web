@@ -1,0 +1,33 @@
+{% extends "usuarios/base.html" %}
+
+{% load static %}
+{% block head_content %}
+    <title>Signup</title>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'clientes:signup' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Username" name="username" required="true">
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" type="email" placeholder="Email address" name="email" required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Password" name="password" required="true">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Password confirmation" name="password_confirmation" required="true">
+        </div>
+
+
+        <button class="" type="submit">Register</button>
+
+    </form>
+
+{% endblock %}
