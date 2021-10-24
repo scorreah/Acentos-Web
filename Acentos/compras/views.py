@@ -9,5 +9,15 @@ def carrito(request):
 
 def compra(request):
     """Se encarga de confirmar la compra y seleccionar los métodos de envio y pago"""
-    return render(request=request,template_name='compras/compra.html')
+    metodoEnvio = ""
+    if request.method == 'POST':
+        val = request.POST.get('searchType')
+        if val == "CE":
+            metodoEnvio = "CE"
+        elif val == "EO":
+            metodoEnvio = "EO"
+        
+    return render(request=request,
+                  template_name='compras/compra.html',
+                  context={'metodoEnvio':metodoEnvio})
 
