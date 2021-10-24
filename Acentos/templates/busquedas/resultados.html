@@ -33,7 +33,7 @@
                     <div class="card-overlay">
                         <div class="linksBTN">
                             <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=resultado.url_libro%}">Ver detalles</a></div>
-                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
+                            <div class="heading"><a class="button" href="{% url 'compras:anadirCarrito' titulo=resultado.titulo %}">Agregar al carrito</a></div>
                         </div>
                     </div>
                     <div class="card_content">
