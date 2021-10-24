@@ -46,7 +46,10 @@ def detalles(request, titulo):
     puntu = 0.0
     for i in comentarios:
         sumaTotal += i.puntuacion
-    puntu = sumaTotal // divisor
+    try:
+        puntu = sumaTotal // divisor
+    except:
+        puntu = 0
     puntu = float(puntu)
     libro = Libro.objects.filter(url_libro__exact=titulo).update(puntuacion=puntu)
     libro = Libro.objects.filter(url_libro__exact=titulo)
