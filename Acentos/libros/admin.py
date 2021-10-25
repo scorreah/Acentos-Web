@@ -4,7 +4,7 @@
 from django.contrib import admin
 
 # Models
-from libros.models import Libro
+from libros.models import Libro, Autor
 
 # Register your models here.
 @admin.register(Libro)
@@ -18,4 +18,10 @@ class LibroAdmin(admin.ModelAdmin):
     search_fields = ('ISBN', 'titulo', 'autor__nombre')
     list_filter = ('precio', 'nuevo', 'preventa', 'puntuacion', 'fecha_publicacion')
 
-    readonly_fields = ('ISBN',)
+@admin.register(Autor)
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'fechaNacimiento', )
+    list_display_links = ('nombre',)
+
+    search_fields = ('nombre', 'libros__titulo')
+    list_filter = ('fechaNacimiento',)

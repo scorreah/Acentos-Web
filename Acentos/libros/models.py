@@ -43,6 +43,10 @@ class Libro(models.Model):
 
     fecha_publicacion = models.DateField()
 
+    def __str__(self):
+        texto = "{0} [ISBN:{1}]"
+        return texto.format(self.titulo, self.ISBN)
+
     class Meta:
         db_table = "Libro"
 
@@ -52,8 +56,14 @@ class Autor(models.Model):
     fechaNacimiento = models.DateField()
 
     libros = models.ManyToManyField(Libro)
+
+    def __str__(self):
+        texto = "{0} ({1})"
+        return texto.format(self.nombre, self.fechaNacimiento)
+
     class Meta:
         db_table = "Autor"
+        verbose_name_plural = "Autores"
 
 class Resena(models.Model):
     comentario = models.CharField(max_length=280, null=True, blank=True)
