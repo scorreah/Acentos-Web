@@ -15,5 +15,15 @@ urlpatterns = [
         route= 'compra/',
         view= views.compra,
         name= 'compra',
+    ),
+    path(
+        route= 'anadirCarrito/<str:titulo>/',
+        view = views.anadirCarrito,
+        name='anadirCarrito',
+    ),
+    path(
+        route= 'eliminarCarrito/<str:titulo>/',
+        view = views.eliminarCarrito,
+        name='eliminarCarrito',
     )
 ]
