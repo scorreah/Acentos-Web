@@ -83,3 +83,12 @@
   .itemsTotal{
       margin-top: 10px;
   }
+
+  #MDE{
+    font-family: 'Comfortaa', cursive;
+    font-size: 15px;
+  }
+
+  #MDE:focus{
+    border:1px solid #2378e0;
+  }

@@ -11,8 +11,9 @@
         <div class="row">
             <div class="col-50">
             <div class="container">
-                <form action="/action_page.php">
                 <div class="row">
+                    <form action="{% url 'compras:compra' %}" method="POST">
+                        {% csrf_token %}
                     <div class="col-75">
                         <label for="fname" class="Txt"><i class="fa fa-user"></i> Nombre del comprador</label>
                         <input type="text" class="camposT" name="firstname" placeholder="Nombre completo">
@@ -21,36 +22,32 @@
                         <h3>Método de envío</h3>
                         <label for="fname" id="MDP">Métodos disponibles</label>
                         <div>
-                            <form action="{% url 'compras:compra' %}" method="POST">
                                 <select name='MDE' id='MDE'>
                                     <option value='DEFAULT' hidden>Métodos de envío</option>
                                     <option value='CE'>Contra entrega</option>
-                                    <option value='EO'>Envío</option>
-                                </select> 
-                            </form>
-                        </div>
-                            {% if metodoEnvio == "EO" %}
-                                <div class="row">
-                                    <div class="col-25">
-                                        <label for="city" class="Txt">Departamento</label>
-                                        <input type="text" class="camposT" name="departamento" placeholder="Tú departamento actual">
-                                        <label for="state" class="Txt">Ciudad</label>
-                                        <input type="text" class="camposT" name="ciudad" placeholder="Tú ciudad actual">
-                                    </div>
-                                    <div class="col-25">
-                                        <label for="zip" class="Txt">Código postal</label>
-                                        <input type="text" class="camposT" name="código postal" placeholder="Tú código postal">
-                                        <label for="adr" class="Txt"><i class="fa fa-address-card-o"></i> Dirección</label>
-                                        <input type="text" class="camposT" name="address" placeholder="Tú dirección">
-                                    </div>
+                                    <option value='EO'><button type="submit">Envío</button></option>
+                                </select>
+                            {% if a == 2 %}
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="city" class="Txt">Departamento</label>
+                                    <input type="text" class="camposT" name="departamento" placeholder="Tú departamento actual">
+                                    <label for="state" class="Txt">Ciudad</label>
+                                    <input type="text" class="camposT" name="ciudad" placeholder="Tú ciudad actual">
                                 </div>
-                            {% endif %}
+                                <div class="col-25">
+                                    <label for="zip" class="Txt">Código postal</label>
+                                    <input type="text" class="camposT" name="código postal" placeholder="Tú código postal">
+                                    <label for="adr" class="Txt"><i class="fa fa-address-card-o"></i> Dirección</label>
+                                    <input type="text" class="camposT" name="address" placeholder="Tú dirección">
+                                </div>
+                            </div>
+                        {% endif %}
+                        </div>
                         </div>
                 </div>
                 <h3>Método de pago</h3>
                 <label for="fname" id="MDP">Métodos disponibles</label>
-                <form action="" method="POST">
-                    {% csrf_token %}
                     <label class="Txt">
                         <input type="checkbox" name="MDP" value="opcionTC"> Pago con tarjeta credito
                         <i class="fas fa-credit-card" style="color:#FA9400"></i>
@@ -67,7 +64,6 @@
                         <input type="checkbox" name="MDP" value="opcionPP"> Pago por Paypal
                         <i class="fab fa-cc-paypal" style="color:blue;"></i> 
                     </label>
-                </form>
                 <input type="submit" value="Realizar compra" class="btn">
                 <!-- Info pa la tarjeta, no sé como implmentarla aún.
                                 <div class="col-50">
@@ -110,6 +106,7 @@
                     </div>
                 </div>
                 -->
+            </form>
             </div>
             </div>
             <div class="col-25">
