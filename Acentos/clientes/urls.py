@@ -23,4 +23,9 @@ urlpatterns = [
         view=views.signup, 
         name='signup'
     ),
+    path(
+        route='perfil/', 
+        view=views.perfil, 
+        name='perfil'
+    ),
 ]

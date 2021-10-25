@@ -25,7 +25,7 @@ from clientes.forms import SignupForm
 def login_view(request):
     """Login view."""
     if request.user.is_authenticated:
-        return redirect('novedades:home')
+        return redirect('clientes:perfil')
     if request.method == 'POST':
         username = request.POST['username']
         passwd = request.POST['password']
@@ -60,3 +60,14 @@ def logout_view(request):
     """Logout a user."""
     logout(request)
     return redirect('novedades:home')
+    
+@login_required
+def perfil(request):
+    user = request.user
+    return render(
+        request=request,
+        template_name='clientes/perfil.html',
+        context={
+            'user': user
+        }
+        )
