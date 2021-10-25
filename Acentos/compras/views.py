@@ -8,13 +8,27 @@ from compras.models import Carrito, LibroCarrito, Cliente, Compra
 from usuarios.models import User
 
 # Create your views here.
+@login_required
 def carrito(request):
     """Se encarga de los detalles del carrito."""
-    userInstance = User.objects.get(username__exact="JulioLee")    
+    userInstance = request.user
     user = Cliente.objects.get(user__exact=userInstance)
     libros = user.carrito.libros.all()
+    cantidadLibros = libros.count()
+    precioTotal = 0
+    for i in libros:
+        precioTotal = i.precio
+    precioEnvio = precioTotal + 8500
 
-    return render(request=request, template_name='compras/carrito.html', context={'libros': libros})
+    return render(
+        request=request,
+        template_name='compras/carrito.html',
+        context={
+            'libros': libros,
+            'precioT': precioTotal,
+            'cantidadLibros': cantidadLibros,
+            'precioEnvio': precioEnvio,
+            })
 
 def compra(request):
     """Se encarga de confirmar la compra y seleccionar los métodos de envio y pago"""
@@ -30,21 +44,22 @@ def compra(request):
         elif val == "EO":
             metodoEnvio = "EO"
     return render(request=request,template_name='compras/compra.html')
-
-#@login_required
+    
+@login_required
 def anadirCarrito(request, titulo):
     """Se encarga de funcionalidad de anadir al carrito."""
     libroInstance = Libro.objects.get(titulo__exact=titulo)
-    userInstance = User.objects.get(username__exact="JulioLee")    
+    userInstance = request.user 
     user = Cliente.objects.get(user__exact=userInstance)
     user.carrito.libros.add(libroInstance)
 
-    
     return redirect ('busquedas:resultados')
 
+@login_required
 def eliminarCarrito(request, titulo):
+    """Se encarga de funcionalidad de eliminar al carrito."""
     libroInstance = Libro.objects.get(titulo__exact=titulo)
-    userInstance = User.objects.get(username__exact="JulioLee")
+    userInstance = request.user 
     user = Cliente.objects.get(user__exact=userInstance)
     libroEliminar = user.carrito.librocarrito_set.all()
     libroEliminar.delete()
