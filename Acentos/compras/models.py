@@ -42,6 +42,9 @@ class Cliente (models.Model):
     carrito = models.OneToOneField(Carrito, models.CASCADE)
     reseñas = models.ManyToManyField(Libro, through="Resena")
 
+    def __str__(self):
+        texto = "{0} (NI: {1})"
+        return texto.format(self.user.username, self.ni)
 
     class Meta:
         db_table = "Cliente"
@@ -68,6 +71,9 @@ class Resena(models.Model):
     libro_id = models.ForeignKey(Libro, on_delete=models.CASCADE, null=True, blank=True)
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
     
+    def __str__(self):
+        texto = "Comment on '{1}' (By {0} on {2})"
+        return texto.format(self.cliente_id.user.username, self.libro_id.titulo, self.fecha_hora)
 
     class Meta:
         db_table = "Resena"
