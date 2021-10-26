@@ -2,6 +2,7 @@
 
 # Django
 from django.shortcuts import render
+from django.contrib import messages
 
 # Models
 from libros.models import Libro
@@ -10,7 +11,7 @@ from compras.models import Resena
 # Create your views here.
 def detalles(request, titulo):
     """Muestra los detalles de un libro."""
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         libroInstance = Libro.objects.get(url_libro__exact=titulo)
         aux = 0.0
         try:
@@ -36,6 +37,8 @@ def detalles(request, titulo):
                             pass
         newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion=aux,libro=libroInstance)
         newComent.save()
+    else:
+        messages.error(request,'Logueateee putooo')
     libro = Libro.objects.filter(url_libro__exact=titulo)
     libro = list(libro.values())
     libro = libro[0]
