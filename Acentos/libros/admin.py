@@ -5,6 +5,7 @@ from django.contrib import admin
 
 # Models
 from libros.models import Libro, Autor
+from compras.models import Resena
 
 # Register your models here.
 @admin.register(Libro)
@@ -25,3 +26,13 @@ class AutorAdmin(admin.ModelAdmin):
 
     search_fields = ('nombre', 'libros__titulo')
     list_filter = ('fechaNacimiento',)
+
+@admin.register(Resena)
+class ResenaAdmin(admin.ModelAdmin):
+    """Libro admin."""
+
+    list_display = ('pk', 'comentario', 'puntuacion', 'fecha_hora',)
+    list_display_links = ('pk',)
+
+    search_fields = ('pk', 'comentario', 'fecha_hora',)
+    list_filter = ('puntuacion', 'fecha_hora',)

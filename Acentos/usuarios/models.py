@@ -10,6 +10,9 @@ class User(AbstractUser):
     usuario_cliente = models.BooleanField(default=False)
     usuario_admin= models.BooleanField(default=False)
 
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
     def is_client(self):
         return self.usuario_cliente
     def is_admin(self):

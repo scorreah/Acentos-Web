@@ -26,12 +26,13 @@ class LibroCarrito(models.Model):
     class Meta:
         db_table = "LibroCarrito"
 
+
 class Cliente (models.Model):
     """Modelo de cliente."""
 
     user = models.OneToOneField(User, models.CASCADE)
 
-    ni = models.CharField(max_length=13, unique=True)
+    ni = models.CharField(max_length=13, unique=True, primary_key=True)
 
     direccion = models.CharField(max_length=100)
     telefono = models.CharField(max_length=20, blank=True)
@@ -39,7 +40,8 @@ class Cliente (models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True)
 
     carrito = models.OneToOneField(Carrito, models.CASCADE)
-    libros = models.ManyToManyField(Libro)
+    reseñas = models.ManyToManyField(Libro, through="Resena")
+
 
     class Meta:
         db_table = "Cliente"
@@ -57,3 +59,15 @@ class Compra(models.Model):
     class Meta:
         db_table = "Compra"
 
+class Resena(models.Model):
+    comentario = models.CharField(max_length=280, null=True, blank=True)
+    puntuacion = models.FloatField(null=True, blank=True)
+
+    fecha_hora = models.DateTimeField(auto_now_add=True)
+
+    libro_id = models.ForeignKey(Libro, on_delete=models.CASCADE, null=True, blank=True)
+    cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
+    
+
+    class Meta:
+        db_table = "Resena"

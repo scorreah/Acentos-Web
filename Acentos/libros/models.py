@@ -6,6 +6,8 @@ from django.db import models
 # Utils
 from django.utils.translation import gettext_lazy as _
 
+# Mode
+
 # Create your models here.
 class Libro(models.Model):
     """Modelo libro."""
@@ -65,13 +67,3 @@ class Autor(models.Model):
         db_table = "Autor"
         verbose_name_plural = "Autores"
 
-class Resena(models.Model):
-    comentario = models.CharField(max_length=280, null=True, blank=True)
-    puntuacion = models.FloatField(null=True, blank=True)
-
-    fecha_hora = models.DateTimeField(auto_now_add=True)
-
-    libro = models.ForeignKey(Libro, on_delete=models.CASCADE, null=True, blank=True)
-
-    class Meta:
-        db_table = "Resena"

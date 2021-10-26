@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Models
 from libros.models import Libro
-from libros.models import Resena
+from compras.models import Resena
 
 # Create your views here.
 def detalles(request, titulo):
