@@ -39,10 +39,15 @@ def detalles(request, titulo):
         newComent.save()
     else:
         messages.error(request,'Logueateee putooo')
+
     libro = Libro.objects.filter(url_libro__exact=titulo)
     libro = list(libro.values())
     libro = libro[0]
-    recomendados = Libro.objects.filter(editorial__icontains=libro['editorial']).exclude(url_libro__exact=titulo)
+
+    recomendados = Libro.objects.filter(editorial__icontains=libro['editorial']).exclude(url_libro__exact=titulo).order_by('?')[:1]
+    recomendados |= Libro.objects.filter(categoria__icontains=libro['categoria']).exclude(url_libro__exact=titulo).order_by('?')[:3]
+
+
     comentarios = Resena.objects.filter(libro_id__exact= libro['ISBN'])
     divisor = comentarios.count()
     sumaTotal = 0
