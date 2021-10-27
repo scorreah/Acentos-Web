@@ -42,9 +42,10 @@ def ordenar(request):
         if orderType == "Ran":
             libros = libros.order_by('puntuacion').reverse()
         if orderType == "Fec":
-            pass
+            libros = libros.order_by('fecha_publicacion')
     return render(
         request=request, 
         template_name="busquedas/resultados.html",
         context={'orderType': orderType, 'resultados': libros}
     )
+
