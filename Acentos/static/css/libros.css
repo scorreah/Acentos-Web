@@ -6,98 +6,123 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
-.contenedor-main{
-    margin: 0 auto;
-    width: 100%;
-    display:flex;
+body {
+    background-color: #fdf1ec;
 }
-
-.producto{
-    display: flex;
-    position: relative;
-    display: inline-block;
-    flex-direction: row;
-    flex-wrap: wrap;
+  
+.wrapper {
+    height: 420px;
     width: 65%;
-    height: 100%;
-    flex:0.75;
-    margin-left: 45px;
+    margin: 50px auto;
+    border-radius: 7px 7px 7px 7px;
+    /* VIA CSS MATIC https://goo.gl/cIbnS */
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
 
-.item{
-    display: flex;
+#portada{
+    height:420px;
+    width:300px;
+}
+  
+.product-img {
+    float: left;
+    height: 420px;
+    width: 300px;
+}
+  
+.product-img img {
+    border-radius: 7px 0 0 7px;
+}
+  
+.product-info {
+    float: left;
+    height: 420px;
+    width: calc(100% - 300px);
+    border-radius: 0 7px 10px 7px;
+    background-color: #ffffff;
+}
+  
+.product-text {
+    height: 300px;
     width: 100%;
-    overflow: hidden;
-    margin-bottom: 10px;
-    background-color: rgb(245,245,245,.5);
 }
-
-.item > img{
-    height: 320px;
-    width: 251px;
+  
+.product-text h1 {
+    margin: 15px;
+    padding-top: 30px;
+    font-size: 34px;
+    color: #474747;
 }
+  
+  .product-text h1,
+  .product-price-btn p {
+    font-family: 'Bentham', serif;
+  }
 
-.informacion-Libro{
-    padding-left:20px;
+  .product-text h3{
+      margin:15px 0px 0px 20px;
+      font-size: 15px;
+  }
+  
+  .product-text a {
+    margin:20px;
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #979797;
+    text-decoration: none;
+  }
+
+  .product-text a:hover{
+      color:#2378e0;
+  }
+
+  .precio {
+    height: 50px;
+    font-family: 'Suranna', serif;
+    font-size: 20px;
+    display:flex;
+  }
+
+  .clasificacion{
+    font-size: 30px;
+    margin: 0 0 0 20px;
+  }
+  
+  .valor{
+    margin: 0 0 0 20px;
+  }
+  
+  .product-price-btn {
+    height: 103px;
     width: 100%;
     position: relative;
-}
-
-.titulo{
-    margin-bottom: 20px;
-    font-family: Muli,sans-serif;
-    font-size: 35px;
-    font-weight: 800px;
-}
-
-.autor{
-    font-family: Muli,sans-serif;
-    font-size: 20px;
-    color:#000;
-    margin-bottom: 20px;
-    text-decoration: none;
-}
-
-.autor:hover{
-    color:red;
-}
-
-.costo{
-    text-align: center;
-    font-family: Muli,sans-serif;
-    font-size: 20px;
-    float: right;
-    display:flex;
-}
-
-.vUnitario{
-    font-size: 15px;
-    color:#929aad;
-}
-
-.btnAnadirLibro{
-    padding: 10px 10px;
+  }
+  
+  .product-price-btn button {
+    display: inline-block;
+    height: 50px;
+    width: 176px;
+    margin: 0 40px 0 16px;
+    border: transparent;
+    border-radius: 60px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #ffffff;
     background-color: #2378e0;
-    color:white;
     cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.btn{
-    margin-top:30px;
-}
-
-.sinopsis{
-    font-family: Muli,sans-serif;
-    font-size: 20px;
-    flex:1;
-    margin-left: 70px;
-    padding:20px;
-    height: 340px;
-    background-color: rgb(245,245,245,.5);
-    width: 35%;
-}
+    outline: none;
+  }
+  
+  .product-price-btn button:hover {
+    background-color: #2d5d99;
+  }
 
 label{ 
     color:grey;
