@@ -15,6 +15,10 @@ class Carrito(models.Model):
     precio = models.IntegerField() 
     libros = models.ManyToManyField(Libro, through="LibroCarrito")
 
+    def __str__(self):
+        texto = "Carrito ({0})"
+        return texto.format(self.pk)
+
     class Meta:
         db_table = "Carrito"
 
@@ -32,19 +36,15 @@ class Cliente (models.Model):
 
     user = models.OneToOneField(User, models.CASCADE)
 
-    ni = models.CharField(max_length=13, unique=True, primary_key=True)
-
     direccion = models.CharField(max_length=100)
     telefono = models.CharField(max_length=20, blank=True)
-
-    fecha_registro = models.DateTimeField(auto_now_add=True)
 
     carrito = models.OneToOneField(Carrito, models.CASCADE)
     reseñas = models.ManyToManyField(Libro, through="Resena")
 
     def __str__(self):
         texto = "{0} (NI: {1})"
-        return texto.format(self.user.username, self.ni)
+        return texto.format(self.user.username, self.pk)
 
     class Meta:
         db_table = "Cliente"

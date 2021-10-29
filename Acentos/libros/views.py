@@ -35,7 +35,8 @@ def detalles(request, titulo):
                                 aux = 1.0
                         except:
                             pass
-        newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion=aux,libro=libroInstance)
+
+        newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion=aux,libro_id=libroInstance, cliente_id=request.user.cliente)
         newComent.save()
     else:
         messages.error(request,'Logueateee putooo')
