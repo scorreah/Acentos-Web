@@ -119,7 +119,19 @@
         </div>
     </div>
     <br> </br>
-    <div class="recomendado"> 
+    <div class="recomendado">
+        <div class = "caracteristicas-main">
+            <h2>Caracteristicas</h2>
+            <div class="caracteristicas">
+                <p>Editorial: {{libro.editorial}}</p>
+                <p>Edicion: {{libro.edicion}}</p>
+                <p>Nro. paginas: {{libro.noPaginas}}</p>
+                <p>Presentacion: {{libro.presentacion}}</p>
+            
+            </div>
+        </div> 
+        <p clas="sinopsis">Sinopsis</p>
+        <p clas="sinopsis">{{ libro.sinopsis }}</p>
         <p> A continuacion te recomendamos libros de la misma editorial {{libro.editorial}}</p>
         <div class ="contenedor-carrousel">
         <div class ="cards">
