@@ -3,8 +3,7 @@
 {% load static %}
 {% block head_content %}
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_signup.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -20,13 +19,15 @@
                 <span class="login100-form-title p-b-48">
                     <i class="fas fa-portrait" style="color:#2378e0;"></i>
                 </span>
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                    <input class="input100" type="text" name="username">
-                    <span class="focus-input100" data-placeholder="Nombre de usuario"></span>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" name="username" required>
+                    <span class="focus-input100"></span>
+                    <label class="holder">Nombre de usuario</label>
                 </div>
-                <div class="wrap-input100 validate-input" data-validate="Ingrese su contraseña">
-                    <input class="input100" type="password" name="password">
-                    <span class="focus-input100" data-placeholder="Ingrese su contraseña"></span>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="password" name="password" required>
+                    <span class="focus-input100"></span>
+                    <label class="holder">Ingrese su contraseña</label>
                 </div>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
@@ -36,12 +37,10 @@
                         </button>
                     </div>
                 </div>
-
-                <div class="text-center p-t-115">
+                <div class="txt_center">
                     <span class="txt1">
                         No tienes una cuenta?
                     </span>
-
                     <a href="{% url 'clientes:signup' %}">Registrate aquí.</a>
                 </div>
             </form>

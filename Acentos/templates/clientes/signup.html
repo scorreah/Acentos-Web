@@ -3,31 +3,55 @@
 {% load static %}
 {% block head_content %}
     <title>Signup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_signup.css' %}">
 {% endblock %}
 
 {% block content %}
-    <form action="{% url 'clientes:signup' %}" method="POST">
-        {% csrf_token %}
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="{% url 'clientes:login' %}" method="POST">
+                    {% csrf_token %}
+                    <span class="login100-form-title p-b-26">
+                        Registrate
+                    </span>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="username" required>
+                        <span class="focus-input100"></span>
+                        <label class="holder">Nombre de usuario</label>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="email" name="email" required>
+                        <span class="focus-input100"></span>
+                        <label class="holder">Ingrese un email</label>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="password" name="password" required>
+                        <span class="focus-input100"></span>
+                        <label class="holder">Ingrese su contraseña</label>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="password" name="password_confirmation" required>
+                        <span class="focus-input100"></span>
+                        <label class="holder">Vuelva a ingresar su contraseña</label>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" type="submit">
+                                Registrarse
+                            </button>
+                        </div>
+                    </div>
+                    <div class="txt_center">
+                        <span class="txt1">
+                            Ya tienes cuenta?
+                        </span>
 
-        <div class="form-group">
-            <input class="form-control" type="text" placeholder="Username" name="username" required="true">
+                        <a href="{% url 'clientes:login' %}">Logueate aquí.</a>
+                    </div>
+                </form>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <input class="form-control" type="email" placeholder="Email address" name="email" required="true">
-        </div>
-
-        <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" name="password" required="true">
-        </div>
-
-        <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password confirmation" name="password_confirmation" required="true">
-        </div>
-
-
-        <button class="" type="submit">Register</button>
-
-    </form>
-
+    </div>
 {% endblock %}

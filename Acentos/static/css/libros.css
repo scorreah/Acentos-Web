@@ -3,6 +3,9 @@
     padding:0px;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
 .contenedor-main{
     margin: 0 auto;
     width: 100%;
@@ -30,7 +33,6 @@
 }
 
 .item > img{
-    
     height: 320px;
     width: 251px;
 }
@@ -252,12 +254,6 @@ input[type = "radio"]:checked ~ label{
     opacity:1;
     margin-top:20px;
 }
-
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-
-
-
 
 .img_comment{
     width: 100%;
