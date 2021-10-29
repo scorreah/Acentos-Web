@@ -26,7 +26,7 @@
         </form>
     <ul class="nav">
         <li>
-            <a href="{% url 'clientes:login' %}" class="hiperMenu"><i class="fas fa-user"></i>Usuario</a>
+            <a href="{% url 'clientes:login' %}" class="hiperMenu"><i class="fas fa-user"></i>{{ request.user.username }}</a>
         </li>
         <li class="carrito">
             <a href="{% url 'compras:carrito' %}" id="cart" class="hiperMenu">

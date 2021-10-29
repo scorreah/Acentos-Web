@@ -6,7 +6,8 @@ from django.forms.widgets import TextInput
 
 # Models
 from usuarios.models import User
-from compras.models import Cliente
+from compras.models import Cliente, Carrito
+
 
 class SignupForm(forms.Form):
     "Signup form."
@@ -81,3 +82,7 @@ class SignupForm(forms.Form):
         print("Sin problemas")
         user.set_password(data['password'])
         user.save()
+        carrito = Carrito.objects.create(precio=0)
+        carrito.save()
+        cliente = Cliente.objects.create(user=user, carrito=carrito)
+        cliente.save()
