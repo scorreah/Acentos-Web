@@ -2,11 +2,13 @@
 
 # Django
 from django.db import models
-from django.db.models.fields import CharField
 
 # Models
 from libros.models import Libro
 from usuarios.models import User
+
+# Utils
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Carrito(models.Model):
@@ -75,11 +77,24 @@ class Reserva (models.Model):
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE, null=True)
     
-    fecha_redaccion = models.DateTimeField(auto_now_add=True)
-    fecha_respuesta = models.DateTimeField(null=True, blank=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
 
-    respondido = models.BooleanField(default=False)
+    class Estado(models.TextChoices):
+        NEW = 'NW', _('Nuevo')
+        OKAY = 'OK', _('Aceptado')
+        DENIED = 'DN', _('Rechazado')
+        ONGOING = 'OG', _('En Proceso')
+        DELIVERED = 'DL', _('Entregado')
 
-    respuesta = models.TextField()
+    estado = models.CharField(
+        max_length=2,
+        choices=Estado.choices,
+        default=Estado.NEW
+    )
+
+    autor = models.CharField(max_length=80, null=True)
+    ISBN = models.CharField(max_length=13)
+    titulo = models.CharField(max_length=100)
+
     class Meta:
         db_table = "Reserva"

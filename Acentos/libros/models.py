@@ -19,7 +19,7 @@ class Libro(models.Model):
     
     categoria = models.CharField(max_length=50, blank=True)
     puntuacion = models.FloatField(null=True, blank=True)
-    edicion = models.CharField(max_length=20, null=True)
+    # edicion = models.CharField(max_length=20, null=True)
     idioma = models.CharField(max_length=20, blank=True)
     noPaginas = models.IntegerField(default=0)
     precio = models.IntegerField(default=0)
