@@ -21,24 +21,26 @@ class Evento (models.Model):
 
     administrador_id = models.ForeignKey(Administrador, on_delete=models.CASCADE)
 
+    def __str__(self):
+        texto = "Evento ({0} - {1})"
+        return texto.format(self.nombre, self.fecha_inicio)
+
     class Meta:
         db_table = "Evento"
 
-# Create your models here.
+
 class Descuento (models.Model):
-    """Modelo de Evento."""
+    """Modelo de Descuento."""
     
-    fecha_inicio = models.DateTimeField()
-    fecha_fin = models.DateTimeField()
+    porcentaje = models.FloatField()
 
-    descripcion = models.TextField()
+    condiciones = models.TextField()
 
-    imagen = models.ImageField(
-        upload_to='novedades/images',
-        
-    )
+    evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
 
-    administrador_id = models.ForeignKey(Administrador, on_delete=models.CASCADE)
+    def __str__(self):
+        texto = "Descuento {1} ({0})"
+        return texto.format(self.evento, self.porcentaje)
 
     class Meta:
         db_table = "Descuento"

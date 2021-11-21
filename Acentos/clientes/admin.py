@@ -4,8 +4,7 @@
 from django.contrib import admin
 
 # Models
-from clientes.models import Cliente
-from clientes.models import Carrito, LibroCarrito
+from clientes.models import Cliente, Carrito, LibroCarrito, Reserva
 
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
@@ -42,3 +41,21 @@ class ClienteAdmin(admin.ModelAdmin):
 admin.site.register(Carrito)
 
 admin.site.register(LibroCarrito)
+
+@admin.register(Reserva)
+class ReservaAdmin(admin.ModelAdmin):
+    """Reserva admin."""
+
+    list_display = ('pk', 'cliente_id', 'administrador_id','fecha_creacion', 'estado', 'autor', 'ISBN', 'titulo',)    
+    list_display_links = ('pk', 'cliente_id', 'administrador_id',) 
+    list_editable = ('estado',) 
+    search_fields = (
+        'pk',
+        'titulo',
+        'autor',
+        'ISBN', 
+    )
+    list_filter = (
+        'fecha_creacion', 
+        'estado',
+    )

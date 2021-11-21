@@ -75,7 +75,7 @@ class Resena(models.Model):
 class Reserva (models.Model):
     """Modelo de Reserva."""
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE, null=True)
+    administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE, null=True, blank=True)
     
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
@@ -95,6 +95,10 @@ class Reserva (models.Model):
     autor = models.CharField(max_length=80, null=True)
     ISBN = models.CharField(max_length=13)
     titulo = models.CharField(max_length=100)
+
+    def __str__(self):
+        texto = "Reserva on '{1}' (By {0} on {2})"
+        return texto.format(self.cliente_id.user.username, self.titulo, self.fecha_creacion)
 
     class Meta:
         db_table = "Reserva"

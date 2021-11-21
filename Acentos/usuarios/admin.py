@@ -2,7 +2,6 @@
 
 # Django
 from django.contrib import admin
-from django.contrib.admin.decorators import display
 
 # Models
 from usuarios.models import User

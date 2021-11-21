@@ -23,7 +23,7 @@ class Compra(models.Model):
 class Devolucion (models.Model):
     """Modelo de Devolucion."""
     compra_id = models.OneToOneField(Compra, on_delete=models.CASCADE)
-    administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE, null=True)
+    administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE, null=True, blank=True)
     
     fecha_redaccion = models.DateTimeField(auto_now_add=True)
     fecha_respuesta = models.DateTimeField(null=True, blank=True)
@@ -33,5 +33,11 @@ class Devolucion (models.Model):
     motivo = models.TextField()
     respuesta = models.TextField()
 
+    def __str__(self):
+        texto = "Return of '{0}' (On {1})"
+        return texto.format(self.compra_id, self.fecha_redaccion)
+
     class Meta:
+        verbose_name = 'Devolucion'
+        verbose_name_plural = 'Devoluciones'
         db_table = "Devolucion"

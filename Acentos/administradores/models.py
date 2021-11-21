@@ -20,4 +20,6 @@ class Administrador (models.Model):
         return texto.format(self.user.username, self.pk)
 
     class Meta:
+        verbose_name = 'Administrador'
+        verbose_name_plural = 'Administradores'
         db_table = "Administrador"
