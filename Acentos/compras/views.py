@@ -53,7 +53,7 @@ def anadirCarrito(request, titulo):
     user = Cliente.objects.get(user__exact=userInstance)
     user.carrito.libros.add(libroInstance)
 
-    return redirect ('busquedas:resultados')
+    return redirect ('novedades:home')
 
 @login_required
 def eliminarCarrito(request, titulo):
@@ -61,7 +61,7 @@ def eliminarCarrito(request, titulo):
     libroInstance = Libro.objects.get(titulo__exact=titulo)
     userInstance = request.user 
     user = Cliente.objects.get(user__exact=userInstance)
-    libroEliminar = user.carrito.librocarrito_set.all()
+    libroEliminar = user.carrito.librocarrito_set.first()
     libroEliminar.delete()
     return redirect ('compras:carrito')
 
