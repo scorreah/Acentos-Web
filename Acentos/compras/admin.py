@@ -4,11 +4,8 @@
 from django.contrib import admin
 
 # Models
-from compras.models import Carrito, LibroCarrito, Compra
+from compras.models import Compra
 
-admin.site.register(Carrito)
-
-admin.site.register(LibroCarrito)
 
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):

@@ -6,7 +6,7 @@ from django.db import models
 # Utils
 from django.utils.translation import gettext_lazy as _
 
-# Mode
+# Models
 
 # Create your models here.
 class Libro(models.Model):

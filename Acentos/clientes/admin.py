@@ -4,7 +4,8 @@
 from django.contrib import admin
 
 # Models
-from compras.models import Cliente
+from clientes.models import Cliente
+from clientes.models import Carrito, LibroCarrito
 
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
@@ -37,3 +38,7 @@ class ClienteAdmin(admin.ModelAdmin):
 #             'fields': (('fecha_registro'),)
 #         }),
 #     )
+
+admin.site.register(Carrito)
+
+admin.site.register(LibroCarrito)

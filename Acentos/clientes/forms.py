@@ -6,7 +6,7 @@ from django.forms.widgets import TextInput
 
 # Models
 from usuarios.models import User
-from compras.models import Cliente, Carrito
+from clientes.models import Cliente, Carrito
 
 
 class SignupForm(forms.Form):
