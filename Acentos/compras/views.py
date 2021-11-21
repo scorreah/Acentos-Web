@@ -3,8 +3,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
+# Models
 from libros.models import Libro
-from compras.models import Carrito, LibroCarrito, Cliente, Compra
+from clientes.models import Carrito, LibroCarrito, Cliente
+from compras.models import Compra
 from usuarios.models import User
 
 # Create your views here.

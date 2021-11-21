@@ -5,7 +5,7 @@ from django.contrib import admin
 
 # Models
 from libros.models import Libro, Autor
-from compras.models import Resena
+from clientes.models import Resena
 
 # Register your models here.
 @admin.register(Libro)

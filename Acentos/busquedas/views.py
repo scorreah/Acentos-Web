@@ -4,7 +4,7 @@
 from django.shortcuts import render, redirect
 
 # Models
-from libros.models import Libro
+from libros.models import Libro, Autor
 
 libros = ""
 librosBU = ""
@@ -33,7 +33,7 @@ def resultados(request):
         if searchType == "Libros":
             libros = Libro.objects.filter(titulo__icontains=searched)
         elif searchType == "Autor":
-            pass
+            libros = Libro.objects.filter(autor__nombre__icontains=searched)
         elif searchType == "Editorial":
             libros = Libro.objects.filter(editorial__icontains=searched)
         librosBU = libros

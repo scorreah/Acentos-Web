@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'busquedas',
     'novedades',
     'usuarios',
-
+    'administradores',
 ]
 
 MIDDLEWARE = [

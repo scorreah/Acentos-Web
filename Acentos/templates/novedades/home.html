@@ -2,33 +2,21 @@
 {% load static %}
 
 {% block head_content %}
-
     <title>Home</title>
-
     <link rel="stylesheet" type="text/css" href="{% static 'css/resultados.css' %}">
-
 {% endblock %}
 
-
-
 {% block content %}
-
 <div class="busquedad">
 
     <div class="filtros">
-
-
-
     </div>
 
     <div class ="contenedor-carrousel">
 
         <h1>Nuevos Lanzamientos</h1>
 
-
-
         <div class ="cards">
-
             {% for n in nuevos %}
 
                 <div class="card">
@@ -38,9 +26,8 @@
                         <div class="linksBTN">
 
                             <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=n.url_libro%}">Ver detalles</a></div>
-
+                            
                             <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
-
                         </div>
 
                     </div>
@@ -50,7 +37,9 @@
                         <div class="card_title">{{ n.titulo }}</div>
 
                         <div class="card_autores">{{ n.editorial }}</div>
-
+                        {% if n.autor_set %}
+                        <div class="card_autores">{{ n.autor_set.first.nombre }}</div>
+                        {% endif %}
                         <div class="card_precio"> {{ n.precio }} COP</div>
 
                     </div>
@@ -62,8 +51,6 @@
             {% endfor %}
 
         </div>
-
-
 
         <h1></br>Proximamente</h1>
 
@@ -90,6 +77,10 @@
                         <div class="card_title">{{ p.titulo }}</div>
 
                         <div class="card_autores">{{ p.editorial }}</div>
+
+                        {% if p.autor_set %}
+                        <div class="card_autores">{{ p.autor_set.first.nombre }}</div>
+                        {% endif %}
 
                         <div class="card_precio"> {{ p.precio }} COP</div>
 

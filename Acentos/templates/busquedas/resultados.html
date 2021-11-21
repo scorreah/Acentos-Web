@@ -66,6 +66,9 @@
                     <div class="card_content">
                         <div class="card_title">{{ resultado.titulo }}</div>
                         <div class="card_autores">{{resultado.editorial}}</div>
+                        {% if resultado.autor_set %}
+                        <div class="card_autores">{{ resultado.autor_set.first.nombre }}</div>
+                        {% endif %}
                         <div class="card_precio"> {{resultado.precio}} COP</div>
                     </div>
                     <img class="card-poster" alt="" src="{{ resultado.portada.url }}">
