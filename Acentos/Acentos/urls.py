@@ -28,6 +28,7 @@ urlpatterns = [
     path('compras/',include(('compras.urls', 'compras'), namespace='compras')),
 
     path('',include(('clientes.urls', 'clientes'), namespace='clientes')),
+    path('',include(('administradores.urls', 'administradores'), namespace='administradores')),
     
     path('', include(('busquedas.urls', 'busquedas'), namespace='busquedas')),
     path('', include(('novedades.urls', 'novedades'), namespace='novedades')),

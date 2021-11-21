@@ -1,7 +1,6 @@
 """Novedaes views"""
 
 #Django
-
 from django.shortcuts import render
 from django.urls import conf
 import libros

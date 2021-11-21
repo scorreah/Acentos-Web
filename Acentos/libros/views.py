@@ -6,7 +6,7 @@ from django.contrib import messages
 
 # Models
 from libros.models import Libro
-from compras.models import Resena
+from clientes.models import Resena
 
 # Create your views here.
 def detalles(request, titulo):

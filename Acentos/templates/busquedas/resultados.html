@@ -8,10 +8,37 @@
 
 {% block content %}
 <div class="busquedad">
+    {% if searched or orderType or filterType or limpiarFil or librosAll %}
     <div class="filtros">
-
+        <h2>Filtros</h2>
+        <div class="tipos">
+            <form action="{%url 'busquedas:filtrar'%}" method="POST">
+            <br>
+            <h3>Precio maximo</h3>
+            <a>0</a><input  type="range" min="0" max="1000000" step="10000" value = "this.nextElementSibling.value = this.value" oninput="this.nextElementSibling.value = this.value" name="myRange"></input><output> </output>
+            <br>
+            <br>
+            {% csrf_token %}
+            <h3>Categoria</h3>
+            <br>
+            <select name="filterType">
+                <option value="Non" filterType="Non" selected>None</option>
+                <option value="Inf" filterType="Inf">Informatica</option>
+                <option value="Lun" filterType="Lun">Literatura Universal</option>
+                <option value="Fan" filterType="Fan">Fantasia</option>
+                <option value="Bio" filterType="Bio">Biografia</option>
+            </select>
+            <br>
+            <br>
+            <button type="submit">Filtrar</button>
+            </form>
+            <form action="{%url 'busquedas:limpiarFiltros'%}" method="POST">
+             {% csrf_token %}
+                <button type="submit" >Limpiar</button>
+            </form>
+        
+        </div>
     </div>
-    {% if searched or orderType %}
     <div class ="contenedor-carrousel">
         <h1>Resultados para: {{ searched }}</h1>
         <div class="ordenar">
@@ -39,6 +66,9 @@
                     <div class="card_content">
                         <div class="card_title">{{ resultado.titulo }}</div>
                         <div class="card_autores">{{resultado.editorial}}</div>
+                        {% if resultado.autor_set %}
+                        <div class="card_autores">{{ resultado.autor_set.first.nombre }}</div>
+                        {% endif %}
                         <div class="card_precio"> {{resultado.precio}} COP</div>
                     </div>
                     <img class="card-poster" alt="" src="{{ resultado.portada.url }}">

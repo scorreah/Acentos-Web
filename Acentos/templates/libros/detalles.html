@@ -13,7 +13,12 @@
         <div class="product-info">
             <div class="product-text">
                 <h1>{{ libro.titulo }}</h1>
-                <a href="#">Yo no se quien</a>
+                {% if libro.autor_set %}
+                    <a href="#">{{ libro.autor_set.first.nombre }}</a>
+                {% else %}
+                    <a href="#">Anonimo</a>
+                {% endif %}
+                
                 <h3>Puntuacion general: {{libro.puntuacion}}</h3>
                 {% if libro.puntuacion == 0.0%}
                 <form>

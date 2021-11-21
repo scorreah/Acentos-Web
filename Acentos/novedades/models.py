@@ -2,20 +2,43 @@
 
 # Django
 from django.db import models
-
 # Models
-#from usuarios.models import User
-
+from administradores.models import Administrador
 # Create your models here.
-class Evento(models.Model):
-    """Modelo de evento."""
-    id = models.AutoField(primary_key=True)
-    #admin = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True) quien sabe
-    fechaInicio = models.DateTimeField()
+class Evento (models.Model):
+    """Modelo de Evento."""
+    nombre = models.CharField(max_length=100)
+    
+    fecha_inicio = models.DateTimeField()
+    fecha_fin = models.DateTimeField()
+
     descripcion = models.TextField()
-    fechaFin = models.DateTimeField()
-    portada = models.ImageField(
-        upload_to='libros/pictures', #Cambiar esto por una carpeta que se llame eventos/pictures
+
+    imagen = models.ImageField(
+        upload_to='novedades/images',
+        
     )
+
+    administrador_id = models.ForeignKey(Administrador, on_delete=models.CASCADE)
+
     class Meta:
         db_table = "Evento"
+
+# Create your models here.
+class Descuento (models.Model):
+    """Modelo de Evento."""
+    
+    fecha_inicio = models.DateTimeField()
+    fecha_fin = models.DateTimeField()
+
+    descripcion = models.TextField()
+
+    imagen = models.ImageField(
+        upload_to='novedades/images',
+        
+    )
+
+    administrador_id = models.ForeignKey(Administrador, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "Descuento"
