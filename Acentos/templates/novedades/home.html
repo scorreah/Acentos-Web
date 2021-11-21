@@ -15,10 +15,11 @@
         <div class="carousel-inner">
             {% for object in carousel%}
             <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}"  data-bs-interval="20000">
-                <img src="{{ object.portada.url }}" style="height:auto; width:100%;" class="testi-overly d-block w-100" alt="sliderImg">
+                <img src="{{ object.imagen.url }}" style="height:auto; width:100%;" class="testi-overly d-block w-100" alt="sliderImg">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3 class="animate__animated animate__zoomIn">Desde {{object.fechaInicio}}</h3>
-                    <h3 class="animate__animated animate__zoomIn">Hasta {{object.fechaFin}}</h3>
+                    <h2 class="titulo">{{object.nombre}}</h2>
+                    <h3 class="animate__animated animate__zoomIn">Desde {{object.fecha_inicio}}</h3>
+                    <h3 class="animate__animated animate__zoomIn">Hasta {{object.fecha_fin}}</h3>
                     <h6>{{object.descripcion}}</h6>
                     <a href="#" class="btn btn-primary">Ver Más</a>
                 </div>

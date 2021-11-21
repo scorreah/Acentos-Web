@@ -15,7 +15,7 @@ class Evento (models.Model):
     descripcion = models.TextField()
 
     imagen = models.ImageField(
-        upload_to='novedades/images',
+        upload_to='novedades/banners',
         
     )
 

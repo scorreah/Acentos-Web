@@ -73,7 +73,7 @@ class Resena(models.Model):
 class Reserva (models.Model):
     """Modelo de Reserva."""
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE)
+    administrador_id = models.ForeignKey('administradores.Administrador', on_delete=models.CASCADE, null=True)
     
     fecha_redaccion = models.DateTimeField(auto_now_add=True)
     fecha_respuesta = models.DateTimeField(null=True, blank=True)
