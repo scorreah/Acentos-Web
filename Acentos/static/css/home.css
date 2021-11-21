@@ -1,0 +1,22 @@
+/* animated css */
+.animate__animated.animate__zoomIn{
+    color:#fff;
+    -webkit-text-stroke: 0.8px #0b5ed7;
+    --animate-delay: 1.7s;
+    --animate-duration: 1.2s
+}
+.animate__animated.animate__bounce{
+    --animate-delay: 1s;
+    --animate-duration: 1.5s
+}
+
+.animate__animated.animate__fadeInDown{
+    --animate-delay: 1s;
+    --animate-duration: 1.5s
+}
+
+.animate__animated.animate__fadeInRight
+{
+    --animate-delay: 1s;
+    --animate-duration: 1.5s
+}
