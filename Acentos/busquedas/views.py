@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 
 # Models
 from libros.models import Libro, Autor
+from clientes.models import Cliente
 
 libros = ""
 librosBU = ""
@@ -12,23 +13,35 @@ searched = ""
 searchType = ""
 orderType = ""
 filterType = ""
+categorias = ""
 
 # Create your views here.
 
 def librosAll(request):
-    global libros, librosBU,searched,searchType,orderType,filterType
+    global libros, librosBU,searched,searchType,orderType,filterType, categorias
+    categorias = set(())
+    for a in Libro.objects.all():
+        categorias.add(a.categoria)
     isLibrosAll = True
     libros = Libro.objects.all()
+    librosBU = libros
     return render(
             request=request, 
             template_name="busquedas/resultados.html", 
-            context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType, 'librosAll': isLibrosAll })
+            context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType, 'librosAll': isLibrosAll, 'categorias':categorias})
 
 def resultados(request):
     """vista resultados"""
-    global libros, librosBU,searched,searchType
+    global libros, librosBU,searched,searchType, categorias
     if request.method == "POST":
+        categorias = set(())
+        for a in Libro.objects.all():
+            categorias.add(a.categoria)
         searched = request.POST['searched']
+        user = request.user
+        cliente = Cliente.objects.get(user__exact=user)
+        cliente.historial = cliente.historial + "--/--" + searched
+        cliente.save()
         searchType = request.POST.get('searchType', "Libros")
         if searchType == "Libros":
             libros = Libro.objects.filter(titulo__icontains=searched)
@@ -40,15 +53,15 @@ def resultados(request):
         return render(
             request=request, 
             template_name="busquedas/resultados.html", 
-            context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType })
+            context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType, 'categorias':categorias })
     else:
         return render(
             request=request, 
             template_name="busquedas/resultados.html", 
-            context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType })
+            context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType, 'categorias':categorias })
 
 def ordenar(request):
-    global libros, librosBU,searched,searchType,orderType,filterType
+    global libros, librosBU,searched,searchType,orderType,filterType, categorias
     if request.method == "POST":
         orderType = request.POST.get('orderType')
         if orderType == "Alf":
@@ -60,38 +73,30 @@ def ordenar(request):
     return render(
         request=request, 
         template_name="busquedas/resultados.html",
-        context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType }
+        context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType, 'categorias':categorias }
     )
 
 def filtrar(request):
-    global libros, librosBU,searched,searchType,orderType,filterType 
+    global libros, librosBU,searched,searchType,orderType,filterType , categorias
     if request.method == "POST":
         filterType = request.POST.get('filterType')
-        if filterType == "Inf":
-            libros = libros.filter(categoria__exact="Informatica")
-        if filterType == "Lun":
-            libros = libros.filter(categoria__exact="Literatura universal")
-        if filterType == "Fan":
-            libros = libros.filter(categoria__exact="Fantasia")
-        if filterType == "Bio":
-            libros = libros.filter(categoria__exact="Biografia")
-        if filterType == "Non":
-            pass
+        libros = libros.filter(categoria__exact=filterType)
         rango = request.POST.get('myRange')
         libros = libros.filter(precio__lte = rango)
     
     return render(
         request=request, 
         template_name="busquedas/resultados.html",
-        context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType }
+        context={'searched': searched, 'searchType': searchType, 'resultados': libros, 'orderType': orderType, 'filterType': filterType, 'categorias':categorias }
     )
 
 def limpiarFiltros(request):
-    global libros, librosBU,searched,searchType,orderType,filterType
+    global libros, librosBU,searched,searchType,orderType,filterType, categorias
     isCleanFilters = True
+    libros = librosBU
     return render(
         request=request, 
         template_name="busquedas/resultados.html",
-        context={'searched': searched, 'searchType': searchType, 'resultados': librosBU, 'orderType': orderType, 'filterType': filterType, 'limpiarFil': isCleanFilters }
+        context={'searched': searched, 'searchType': searchType, 'resultados': librosBU, 'orderType': orderType, 'filterType': filterType, 'limpiarFil': isCleanFilters, 'categorias':categorias }
     )
 

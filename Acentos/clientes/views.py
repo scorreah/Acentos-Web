@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 
+from clientes.models import Cliente, Reserva
+
 # Forms
 from clientes.forms import SignupForm
 
@@ -64,10 +66,36 @@ def logout_view(request):
 @login_required
 def perfil(request):
     user = request.user
+    cliente = Cliente.objects.get(user__exact=user)
+    if request.method == 'POST':
+        telefono = request.POST['telefono']
+        direccion = request.POST['direccion']
+        cliente.telefono = telefono
+        cliente.direccion = direccion
+        cliente.save()
     return render(
         request=request,
         template_name='clientes/perfil.html',
         context={
-            'user': user
+            'user': user,
+            'cliente': cliente
+        }
+        )
+
+@login_required
+def solicitudReserva(request):
+    if request.method == 'POST':
+        userInstance = request.user
+        user = Cliente.objects.get(user__exact=userInstance)
+        titulo = request.POST['titulo']
+        autor = request.POST['autor']
+        isbn = request.POST['isbn']
+        nuevaReserva = Reserva.objects.create(cliente_id=user, autor=autor, ISBN=isbn, titulo=titulo)
+        nuevaReserva.save()
+
+    return render(
+        request=request,
+        template_name='clientes/solicitudReserva.html',
+        context={
         }
         )

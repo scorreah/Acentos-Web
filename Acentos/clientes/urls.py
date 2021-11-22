@@ -28,4 +28,9 @@ urlpatterns = [
         view=views.perfil, 
         name='perfil'
     ),
+    path(
+        route='solicitudReserva/', 
+        view=views.solicitudReserva,  
+        name='solicitudReserva'
+    ),
 ]
