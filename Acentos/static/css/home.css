@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+.title-presentation h1{ color: #808080; 
+    font-family: 'Signika', sans-serif; 
+    font-size: 64px; font-weight: 700; line-height: 64px; 
+    margin: 10px 10px 10px; padding: 20px 30px; text-align: center; 
+}
+
 /* animated css */
 .animate__animated.animate__zoomIn{
     color:#fff;
@@ -19,4 +27,40 @@
 {
     --animate-delay: 1s;
     --animate-duration: 1.5s
+}
+
+/*  owl */
+
+.owl-controls .owl-buttons {
+	position: relative;
+}
+.owl-controls .owl-prev {
+	position: absolute;
+	left: -40px;
+	bottom: 185px;
+	padding: 8px 17px;
+	background: #0b5ed7;
+	border-radius: 50px;
+	transition: .5s;
+}
+.owl-controls .owl-next {
+	position: absolute;
+	right: -40px;
+	bottom: 185px;
+	padding: 8px 17px;
+	background: #0b5ed7;
+	border-radius: 50px;
+	transition: .5s;
+}
+.owl-controls .owl-prev:after, .owl-controls .owl-next:after {
+	content: '\f104';
+	font-family: FontAwesome;
+	color: #fff;
+	font-size: 16px;
+}
+.owl-controls .owl-next:after {
+	content: '\f105';
+}
+.owl-controls .owl-prev:hover, .owl-controls .owl-next:hover {
+	background: #000;
 }
