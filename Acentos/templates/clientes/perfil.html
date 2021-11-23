@@ -1,12 +1,41 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head_content %}
-    <title>Perfil</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/compra.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Perfil de usuario</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reserva.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reserva-fonts.css' %}">
 {% endblock %}
 
 {% block content %}
-<form>
-    <h2>Perfil de usuario: {{user}}</h2>
-</form>
+<body>
+    <section class="form_wrap">
+        <section class="cantact_info">
+            <section class="info_title">
+                <span class="fa fa-user-circle"></span>
+                <h2>{{user}}</h2>
+            </section>
+        </section>
+
+        <form action="{% url 'clientes:perfil' %}" class="form_contact" method="POST">
+        {% csrf_token %}
+            <h2></h2>
+            <div class="user_info">
+                <label for="telefono"> Telefono</label>
+                <input type="text" id="telefono" name="telefono" value="{{cliente.telefono}}">
+
+                <label for="direccion">Direccion *</label>
+                <input type="text" id="direccion" name="direccion" value="{{cliente.direccion}}">
+
+                <label for="historial">Historial *</label>
+                <input type="text" id="historial" name="historial" value="{{cliente.historial}}" readonly>
+
+                <button type="submit" id="btnSend">Actualizar info</button>
+            </div>
+        </form>
+    </section>
+</body>
 {% endblock %}
