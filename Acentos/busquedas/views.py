@@ -6,6 +6,9 @@ from django.shortcuts import render, redirect
 # Models
 from libros.models import Libro, Autor
 from clientes.models import Cliente
+from clientes.models import Carrito
+from clientes.models import LibroCarrito
+
 
 libros = ""
 librosBU = ""
@@ -100,4 +103,3 @@ def limpiarFiltros(request):
         template_name="busquedas/resultados.html",
         context={'searched': searched, 'searchType': searchType, 'resultados': librosBU, 'orderType': orderType, 'filterType': filterType, 'limpiarFil': isCleanFilters, 'categorias':categorias }
     )
-

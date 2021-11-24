@@ -9,6 +9,16 @@
 .filtros{
     width:20%;
     background-color:whitesmoke;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+}
+
+.tipos{
+    width:90%;
+    align-items: center;
+    text-align: center;
+    background-color: #2378e0;
 }
 
 .contenedor-carrousel{

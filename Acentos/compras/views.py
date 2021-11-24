@@ -38,12 +38,19 @@ def carrito(request):
             'precioEnvio': precioEnvio,
             })
 
+@login_required
 def compra(request):
     """Se encarga de confirmar la compra y seleccionar los métodos de envio y pago"""
+    userInstance = request.user
+    user = Cliente.objects.get(user__exact=userInstance)
+    carrito = Carrito.objects.get(cliente__exact=user)
+    libros = LibroCarrito.objects.filter(carrito_id__exact=carrito).all()
+    precioTotal = 8500
+    for i in libros:
+        precioTotal += i.cantidad * i.libro_id.precio
     if request.method == 'POST':
         cliente = Cliente.objects.get(user = request.user)
         tel = request.POST.get('Teléfono de contacto')
-        mde = request.POST.get('MDE')
         mdp = ""
         if request.POST.get('MDPCT'):
             mdp = "Tarjeta de credito"
@@ -53,8 +60,7 @@ def compra(request):
             mdp = "Tarjeta de debito"
         elif request.POST.get('MDPCP'):
             mdp = "Paypal"
-        costo = 100000
-        
+        costo = precioTotal
         val = request.POST.get('MDE')
         if val == "RT":
             metodoEnvio = "Recoger en tienda"
@@ -71,7 +77,7 @@ def compra(request):
         }
         purchase = Compra.objects.create(**compra)
         purchase.save()
-    return render(request=request,template_name='compras/compra.html')
+    return render(request=request,template_name='compras/compra.html',context={'libros':libros,'precioTotal':precioTotal})
     
 @login_required
 def anadirCarrito(request, titulo):
