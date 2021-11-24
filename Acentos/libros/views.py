@@ -1,7 +1,7 @@
 """Libros views."""
 
 # Django
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 
 # Models
@@ -39,8 +39,7 @@ def detalles(request, titulo):
         newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion=aux,libro_id=libroInstance, cliente_id=request.user.cliente)
         newComent.save()
     else:
-        #messages.error(request,'Logueateee putooo')
-        pass
+        return redirect('clientes:login')
 
     libro = Libro.objects.filter(url_libro__exact=titulo)
     libro = list(libro.values())
