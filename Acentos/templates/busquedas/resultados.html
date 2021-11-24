@@ -28,11 +28,11 @@
             </select>
             <br>
             <br>
-            <button type="submit">Filtrar</button>
+            <button type="submit" class="buttonFilter">Filtrar</button>
             </form>
             <form action="{%url 'busquedas:limpiarFiltros'%}" method="POST">
              {% csrf_token %}
-                <button type="submit" >Limpiar</button>
+                <button type="submit" class="buttonFilter">Limpiar</button>
             </form>
         
         </div>

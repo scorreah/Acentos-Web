@@ -18,7 +18,29 @@
     width:90%;
     align-items: center;
     text-align: center;
-    background-color: #2378e0;
+}
+
+.tipos h2{
+    font-size: 15px;
+}
+
+.tipos h3{
+    font-size: 10px;
+}
+
+.buttonFilter{
+    padding:10px;
+    border:1px solid rgb(255, 255, 255);
+    border-radius:30px;
+    color:#fff;
+    text-decoration: none;
+    font-weight:400;
+    font-size:10px;
+}
+
+.buttonFilter:hover{
+    background:#2378e0;
+    color:rgb(255, 255, 255);
 }
 
 .contenedor-carrousel{

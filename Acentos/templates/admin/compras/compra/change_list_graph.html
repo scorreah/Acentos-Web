@@ -11,12 +11,32 @@
 {% block content %}
     <h1>Graphs:</h1>
     {% regroup cl.queryset|dictsort:"fecha_compra" by get_fecha_compra_display as fecha_compra_list %}
-    {% for compra in fecha_compra_list %}<p id ="list">{{ compra.list }} </p>{% endfor %}
+    {% for compra in fecha_compra_list %}<p id ="list" hidden>{{ compra.list }} </p>{% endfor %}
     <hr>
     <div id = "container-line" ></div>
     <script type="application/javascript">
         var lista = document.getElementById("list").innerHTML;
-        console.log(lista + " JAJJAA");
+        console.log(lista);
+        series1 = [];
+        var listaSplit = lista.split(",");
+        console.log(listaSplit);
+        console.log(listaSplit[0].indexOf("("));
+        var data = listaSplit[0].substring(listaSplit[0].indexOf("(")+4,listaSplit[0].indexOf("(")+12);
+        console.log(data);
+        if(data.endsWith("b")){
+            data = data.split(" ")[0];
+            console.log(data);
+        }
+        var año = data.split("/")[0];
+        console.log(año);
+        var mes = parseInt(data.split("/")[1]);
+        console.log(mes);
+        series1.push(
+            {
+            name: año,
+            data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            }//preguntar si ya hay alguna serie, si no se agrega, se revisa si la seria que esta coincide con alguna, si no se agrega con 12 campos nuevos, además se va suamndo los meses y melo.
+        );
         var graphline = Highcharts.chart('container-line', {
         title: {
             text: 'Crecimiento de ventas mensual'
