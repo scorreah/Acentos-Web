@@ -13,30 +13,32 @@ from usuarios.models import User
 import datetime
 
 # Create your views here.
-@login_required
 def carrito(request):
     """Se encarga de los detalles del carrito."""
-    userInstance = request.user
-    user = Cliente.objects.get(user__exact=userInstance)
-    carrito = Carrito.objects.get(cliente__exact=user)
-    libros = LibroCarrito.objects.filter(carrito_id__exact=carrito).all()
-    cantidadLibros = 0
-    precioTotal = 0
-    for i in libros:
-        precioTotal += i.cantidad * i.libro_id.precio
-        cantidadLibros += i.cantidad
-    precioEnvio = precioTotal + 8500
-    carrito.precio = precioTotal
-    carrito.save()
-    return render(
-        request=request,
-        template_name='compras/carrito.html',
-        context={
-            'libros': libros,
-            'precioT': precioTotal,
-            'cantidadLibros': cantidadLibros,
-            'precioEnvio': precioEnvio,
-            })
+    if request.user.is_authenticated:
+        userInstance = request.user
+        user = Cliente.objects.get(user__exact=userInstance)
+        carrito = Carrito.objects.get(cliente__exact=user)
+        libros = LibroCarrito.objects.filter(carrito_id__exact=carrito).all()
+        cantidadLibros = 0
+        precioTotal = 0
+        for i in libros:
+            precioTotal += i.cantidad * i.libro_id.precio
+            cantidadLibros += i.cantidad
+        precioEnvio = precioTotal + 8500
+        carrito.precio = precioTotal
+        carrito.save()
+        return render(
+            request=request,
+            template_name='compras/carrito.html',
+            context={
+                'libros': libros,
+                'precioT': precioTotal,
+                'cantidadLibros': cantidadLibros,
+                'precioEnvio': precioEnvio,
+                })
+    else:
+        return redirect('clientes:login')
 
 @login_required
 def compra(request):
@@ -86,22 +88,26 @@ def compra(request):
     else:
         return render(request=request,template_name='compras/compra.html',context={'libros':libros,'precioTotal':precioTotal, 'cantidadLibros':cantidadLibros})
     
-@login_required
+
 def anadirCarrito(request, titulo):
     """Se encarga de funcionalidad de anadir al carrito."""
-    libroInstance = Libro.objects.get(titulo__exact=titulo)
-    userInstance = request.user 
-    user = Cliente.objects.get(user__exact=userInstance)
-    carrito = Carrito.objects.get(cliente__exact=user)
-    existe = LibroCarrito.objects.filter(carrito_id__exact=carrito).filter(libro_id__exact=libroInstance).count()
-    if existe > 0:
-        libro = LibroCarrito.objects.filter(carrito_id__exact=carrito).get(libro_id__exact=libroInstance)
-        libro.cantidad += 1
-        libro.save()
+    if request.user.is_authenticated:
+        libroInstance = Libro.objects.get(titulo__exact=titulo)
+        userInstance = request.user 
+        user = Cliente.objects.get(user__exact=userInstance)
+        carrito = Carrito.objects.get(cliente__exact=user)
+        existe = LibroCarrito.objects.filter(carrito_id__exact=carrito).filter(libro_id__exact=libroInstance).count()
+        if existe > 0:
+            libro = LibroCarrito.objects.filter(carrito_id__exact=carrito).get(libro_id__exact=libroInstance)
+            libro.cantidad += 1
+            libro.save()
+        else:
+            user.carrito.libros.add(libroInstance)
+        return redirect ('compras:carrito') 
     else:
-        user.carrito.libros.add(libroInstance)
+        return redirect('clientes:login')
 
-    return redirect ('compras:carrito')
+    
 
 @login_required
 def eliminarCarrito(request, titulo):
