@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reserva</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reserva.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reserva-fonts.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+    <section class="form_wrap">
+        <section class="cantact_info">
+            <section class="info_title">
+                <span class="fa fa-book"></span>
+                <h2>Reserva<br>de libros</h2>
+            </section>
+        </section>
+
+        <form action="{% url 'clientes:solicitudReserva' %}" class="form_contact" method="POST">
+        {% csrf_token %}
+            <h2>Informacion del libro</h2>
+            <div class="user_info">
+                <label for="titulo">Titulo *</label>
+                <input type="text" id="titulo" name="titulo">
+
+                <label for="autor">Autor *</label>
+                <input type="text" id="autor" name="autor">
+
+                <label for="isbn">ISBN *</label>
+                <input type="text" id="isbn" name="isbn">
+
+                <button type="submit" id="btnSend">Reservar</button>
+            </div>
+        </form>
+    </section>
+</body>
+{% endblock %}

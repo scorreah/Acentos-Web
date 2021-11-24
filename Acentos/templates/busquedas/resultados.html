@@ -22,11 +22,9 @@
             <h3>Categoria</h3>
             <br>
             <select name="filterType">
-                <option value="Non" filterType="Non" selected>None</option>
-                <option value="Inf" filterType="Inf">Informatica</option>
-                <option value="Lun" filterType="Lun">Literatura Universal</option>
-                <option value="Fan" filterType="Fan">Fantasia</option>
-                <option value="Bio" filterType="Bio">Biografia</option>
+                {% for categoria in categorias %}
+                <option value="{{categoria}}" filterType="{{categoria}}" >{{categoria}}</option>
+                {%endfor%}
             </select>
             <br>
             <br>
