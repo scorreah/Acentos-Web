@@ -25,5 +25,15 @@ urlpatterns = [
         route= 'eliminarCarrito/<str:titulo>/',
         view = views.eliminarCarrito,
         name='eliminarCarrito',
+    ),
+    path(
+        route= 'sumarCantidad/<str:titulo>/',
+        view = views.sumarCantidad,
+        name='sumarCantidad',
+    ),
+    path(
+        route= 'restarCantidad/<str:titulo>/',
+        view = views.restarCantidad,
+        name='restarCantidad',
     )
 ]
