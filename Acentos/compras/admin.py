@@ -24,6 +24,8 @@ class CompraAdmin(admin.ModelAdmin):
 
     readonly_fields = ('pk',)
 
+    change_list_template = 'admin/compras/compra/change_list_graph.html'
+
 @admin.register(Devolucion)
 class DevolucionAdmin(admin.ModelAdmin):
     """Devolucion admin."""

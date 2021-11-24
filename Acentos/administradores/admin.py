@@ -2,6 +2,7 @@
 
 # Django
 from django.contrib import admin
+from django.contrib.auth.models import Group
 
 # Models
 from administradores.models import Administrador
@@ -24,3 +25,5 @@ class AdministradorAdmin(admin.ModelAdmin):
     list_filter = (
         'user__created', 
     )
+
+admin.site.unregister(Group)

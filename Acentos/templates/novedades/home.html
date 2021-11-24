@@ -6,6 +6,12 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/resultados.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link href="css/style.css"rel="stylesheet"type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" crossorigin="anonymous"></script>   
 
 {% endblock %}
 
@@ -39,27 +45,19 @@
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
-<div class="busquedad">
-
-
-    <div class ="contenedor-carrousel">
-        <h1>Nuevos Lanzamientos</h1>
-        <div class ="cards">
-            {% for n in nuevos %}
+    <span class="title-presentation"><h1> Nuevos Lanzamientos </h1></span>
+    <div class="container">
+        <div class="row">
+            <div id="news-slider1" class="owl-carousel">
+                {% for n in nuevos %}
                 <div class="card">
                     <div class="card-overlay">
-
                         <div class="linksBTN">
-
                             <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=n.url_libro%}">Ver detalles</a></div>
-                            
                             <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
                         </div>
-
                     </div>
-
                     <div class="card_content">
-
                         <div class="card_title">{{ n.titulo }}</div>
 
                         <div class="card_autores">{{ n.editorial }}</div>
@@ -67,61 +65,71 @@
                         <div class="card_autores">{{ n.autor_set.first.nombre }}</div>
                         {% endif %}
                         <div class="card_precio"> {{ n.precio }} COP</div>
-
                     </div>
-
                     <img class="card-poster" alt="" src="{{ n.portada.url }}">
-
                 </div>
-
             {% endfor %}
-
+            </div>
         </div>
+    </div>
 
-        <h1></br>Proximamente</h1>
-
-        <div class ="cards">
-
-            {% for p in preventa %}
-
+    <span class="title-presentation"><h1> Próximamente </h1></span>
+    <div class="container">
+        <div class="row">
+            <div id="news-slider2" class="owl-carousel">
+                {% for p in preventa %}
                 <div class="card">
-
                     <div class="card-overlay">
-
                         <div class="linksBTN">
-
                             <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=p.url_libro%}">Ver detalles</a></div>
-
-                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Preventa</a></div>
-
+                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
                         </div>
-
                     </div>
-
-                    <div class="card_content">
-
+                    <div class="card_content">  
                         <div class="card_title">{{ p.titulo }}</div>
 
                         <div class="card_autores">{{ p.editorial }}</div>
-
                         {% if p.autor_set %}
                         <div class="card_autores">{{ p.autor_set.first.nombre }}</div>
                         {% endif %}
-
                         <div class="card_precio"> {{ p.precio }} COP</div>
-
                     </div>
-
                     <img class="card-poster" alt="" src="{{ p.portada.url }}">
-
                 </div>
-
             {% endfor %}
-
+            </div>
         </div>
-
     </div>
 
-</div>
+    </br></br>
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function() {
+    $("#news-slider1").owlCarousel({
+        items : 5,
+        itemsDesktop:[1199,2],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [700,1],
+        pagination:false,
+        navigation:true,
+        navigationText:["",""],
+        autoPlay:true
+    });
+
+    $("#news-slider2").owlCarousel({
+        items : 5,
+        itemsDesktop:[1199,2],
+        itemsDesktopSmall:[980,2],
+        itemsMobile : [700,1],
+        pagination:false,
+        navigation:true,
+        navigationText:["",""],
+        autoPlay:true
+    });
+    });
+
+    </script>
 
 {% endblock %}
