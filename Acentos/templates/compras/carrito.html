@@ -12,18 +12,18 @@
         <div class="items">
             {% for item in libros %}
             <div class="item">
-                <img src="/media/{{ item.portada }}">
+                <img src="/media/{{ item.libro_id.portada }}">
                 <div class="informacion-Libro">
-                    <h2 class="titulo">{{item.titulo}}</h2>
+                    <h2 class="titulo">{{item.libro_id.titulo}}</h2>
                     <a href="#" class="autor">Menno schilthuizen</a>
                     <div class="costo">
                         <div class="especificacion">
                             <p class="vUnitario">Valor Unitario</p>
-                            <p class="precio-producto">{{item.precio}}</p>
+                            <p class="precio-producto">{{item.libro_id.precio}}</p>
                         </div>
                         <div class="especificacion">
                             <p class="vTotal">Valor Total</p>
-                            <p class="precio-producto-total">{{precioT}}</p>
+                            <p class="precio-producto-total">{{item.libro_id.precio}} * {{item.cantidad}}</p>
                         </div>
                     </div>
                     <div class="agregarCantidad">
@@ -35,7 +35,7 @@
                     </div>
                     <form action="" class="">
                     <div class="btn">
-                        <a href="{%url 'compras:eliminarCarrito' titulo=item.titulo%}" class="btnEliminarLib">
+                        <a href="{%url 'compras:eliminarCarrito' titulo=item.libro_id.titulo%}" class="btnEliminarLib">
                             Eliminar
                             <i class="fas fa-trash-alt"></i>
                         </a>
