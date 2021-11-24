@@ -46,8 +46,10 @@ def compra(request):
     carrito = Carrito.objects.get(cliente__exact=user)
     libros = LibroCarrito.objects.filter(carrito_id__exact=carrito).all()
     precioTotal = 8500
+    cantidadLibros = 0
     for i in libros:
         precioTotal += i.cantidad * i.libro_id.precio
+        cantidadLibros += i.cantidad
     if request.method == 'POST':
         cliente = Cliente.objects.get(user = request.user)
         tel = request.POST.get('Teléfono de contacto')
@@ -66,8 +68,6 @@ def compra(request):
             metodoEnvio = "Recoger en tienda"
         elif val == "EO":
             metodoEnvio = "Envio"
-        print(metodoEnvio)
-        print(mdp)
         compra = {
             'metodo_pago': mdp,
             'metodo_envio': metodoEnvio,
@@ -77,7 +77,9 @@ def compra(request):
         }
         purchase = Compra.objects.create(**compra)
         purchase.save()
-    return render(request=request,template_name='compras/compra.html',context={'libros':libros,'precioTotal':precioTotal})
+        return redirect ('novedades:home')
+    else:
+        return render(request=request,template_name='compras/compra.html',context={'libros':libros,'precioTotal':precioTotal, 'cantidadLibros':cantidadLibros})
     
 @login_required
 def anadirCarrito(request, titulo):
