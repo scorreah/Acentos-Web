@@ -20,23 +20,43 @@
         series1 = [];
         var listaSplit = lista.split(",");
         console.log(listaSplit);
-        console.log(listaSplit[0].indexOf("("));
-        var data = listaSplit[0].substring(listaSplit[0].indexOf("(")+4,listaSplit[0].indexOf("(")+12);
-        console.log(data);
-        if(data.endsWith("b")){
-            data = data.split(" ")[0];
-            console.log(data);
+        for(var i = 0; i < listaSplit.length; i++) {
+            var data = listaSplit[i].substring(listaSplit[i].indexOf("(")+4,listaSplit[i].indexOf("(")+12);
+            if(data.endsWith("b")){
+                data = data.split(" ")[0];
+            }
+            var año = data.split("/")[0];
+            console.log(año);
+            var mes = parseInt(data.split("/")[1]);
+            console.log(mes);
+            if(series1.length == 0){
+                series1.push(
+                    {
+                        name:año,
+                        data:[0,0,0,0,0,0,0,0,0,0,0,0]
+                    }
+                );
+                series1[0].data[mes-1] += 1;
+            }else{
+                var bool = false;
+                for(var j = 0; j < series1.length; j++) {
+                    if(series1[j].name == año) {
+                        series1[j].data[mes-1] += 1;
+                        bool = true;
+                    }
+                }
+                if(!bool){
+                    series1.push(
+                        {
+                            name:año,
+                            data:[0,0,0,0,0,0,0,0,0,0,0,0]
+                        }
+                    );
+                    series1[series1.length-1].data[mes-1] += 1;
+                }
+            }
         }
-        var año = data.split("/")[0];
-        console.log(año);
-        var mes = parseInt(data.split("/")[1]);
-        console.log(mes);
-        series1.push(
-            {
-            name: año,
-            data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            }//preguntar si ya hay alguna serie, si no se agrega, se revisa si la seria que esta coincide con alguna, si no se agrega con 12 campos nuevos, además se va suamndo los meses y melo.
-        );
+        console.log(series1);
         var graphline = Highcharts.chart('container-line', {
         title: {
             text: 'Crecimiento de ventas mensual'
@@ -72,20 +92,7 @@
         tooltip: {
             pointFormat: ' Cantidad de ventas mensuales <b>{point.y:,.0f}</b><br/> '
         },
-        series: [{
-            name: '2018',
-            data: [14, 78, 66, 53, 42, 33, 21, 12, 49, 38, 50, 33]
-        },
-        {
-            name: '2019',
-            data: [33, 30, 14, 30, 45, 53, 13, 14, 32, 71, 57, 40]
-        },{
-            name: '2020',
-            data: [42, 54, 45, 31, 29, 48, 19, 30, 39, 46, 38, 20]
-        },{
-            name: '2021',
-            data: [18, 34, 45, 62, 42, 31, 18, 29, 37, 58, 27]
-        },],
+        series: series1,
         responsive: {
             rules: [{
                 condition: {
