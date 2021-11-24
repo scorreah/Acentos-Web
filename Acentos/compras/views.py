@@ -93,7 +93,8 @@ def anadirCarrito(request, titulo):
         libro.save()
     else:
         user.carrito.libros.add(libroInstance)
-    return ('compras:carrito')
+
+    return redirect ('compras:carrito')
 
 @login_required
 def eliminarCarrito(request, titulo):

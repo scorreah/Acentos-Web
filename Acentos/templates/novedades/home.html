@@ -52,7 +52,7 @@
                     <div class="card-overlay">
                         <div class="linksBTN">
                             <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=n.url_libro%}">Ver detalles</a></div>
-                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
+                            <div class="heading"><a class="button" href="{% url 'compras:anadirCarrito' titulo=n.titulo %}">Agregar al carrito</a></div>
                         </div>
                     </div>
                     <div class="card_content">
@@ -80,7 +80,7 @@
                     <div class="card-overlay">
                         <div class="linksBTN">
                             <div class="heading"><a class="button" href="{% url 'libros:detalles' titulo=p.url_libro%}">Ver detalles</a></div>
-                            <div class="heading"><a class="button" href="{% url 'compras:carrito' %}">Agregar al carrito</a></div>
+                            <div class="heading"><a class="button" href="{% url 'compras:anadirCarrito' titulo=p.titulo %}">Agregar al carrito</a></div>
                         </div>
                     </div>
                     <div class="card_content">  

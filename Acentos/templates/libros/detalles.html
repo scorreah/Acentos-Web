@@ -119,7 +119,10 @@
                 <p class="valor">Valor Unitario<span class="precio">{{ libro.precio }} COP</span></p>
             </div>
             <div class="product-price-btn">
-                <button type="button">Añadir al carrito</button>
+            <form action="{%url 'compras:anadirCarrito' titulo=libro.titulo%}">
+            {%csrf_token%}
+                <button type="sumbit">Añadir al carrito</button>
+            </form>
             </div>
         </div>
     </div>
