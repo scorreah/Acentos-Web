@@ -114,11 +114,11 @@
                 <h4 style="color:#2378e0; margin-bottom: 10px; padding-top: 20px;">Mi carrito
                 <span class="price" style="color:black;">
                     <i class="fa fa-shopping-cart"></i>
-                    <b>4</b>
+                    <b>{{cantidadLibros}}</b>
                 </span>
                 </h4>
                 {% for libro in libros %}
-                <p class="items">Product {{forloop.counter}}<span class="price">{{libro.precio}} COP</span></p>
+                <p class="items">Libro {{forloop.counter}}<span class="price">{{libro.libro_id.precio}} * {{libro.cantidad}} COP</span></p>
                 {% endfor %}
                 <p class="items">Costo de envio<span class="price">8.500 COP</span></p>
                 <hr>
