@@ -55,10 +55,11 @@ def signup(request):
         }
     )
 
-@login_required
 def logout_view(request):
     """Logout a user."""
-    logout(request)
+    if request.user.is_authenticated:
+        print("Estaba autenticado")
+        logout(request)
     return redirect('novedades:home')
     
 @login_required
