@@ -88,7 +88,8 @@ def eliminarCarrito(request, titulo):
     libroInstance = Libro.objects.get(titulo__exact=titulo)
     userInstance = request.user 
     user = Cliente.objects.get(user__exact=userInstance)
-    libroEliminar = user.carrito.librocarrito_set.first()
+    carrito = Carrito.objects.get(cliente__exact=user)
+    libroEliminar = LibroCarrito.objects.filter(carrito_id__exact=carrito).filter(libro_id__exact=libroInstance)
     libroEliminar.delete()
     return redirect ('compras:carrito')
 
