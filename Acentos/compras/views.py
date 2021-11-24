@@ -77,6 +77,11 @@ def compra(request):
         }
         purchase = Compra.objects.create(**compra)
         purchase.save()
+        limpiar = LibroCarrito.objects.filter(carrito_id__exact=carrito).all()
+        for libro in limpiar:
+            libro.delete()
+        carrito.precio = 0
+        carrito.save()
         return redirect ('novedades:home')
     else:
         return render(request=request,template_name='compras/compra.html',context={'libros':libros,'precioTotal':precioTotal, 'cantidadLibros':cantidadLibros})
@@ -95,7 +100,8 @@ def anadirCarrito(request, titulo):
         libro.save()
     else:
         user.carrito.libros.add(libroInstance)
-    return ('compras:carrito')
+
+    return redirect ('compras:carrito')
 
 @login_required
 def eliminarCarrito(request, titulo):
