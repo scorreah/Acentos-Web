@@ -38,10 +38,11 @@ def resultados(request):
         for a in Libro.objects.all():
             categorias.add(a.categoria)
         searched = request.POST['searched']
-        user = request.user
-        cliente = Cliente.objects.get(user__exact=user)
-        cliente.historial = cliente.historial + "--/--" + searched
-        cliente.save()
+        if request.user.is_authenticated:
+            user = request.user
+            cliente = Cliente.objects.get(user__exact=user)
+            cliente.historial = cliente.historial + "--/--" + searched
+            cliente.save()
         searchType = request.POST.get('searchType', "Libros")
         if searchType == "Libros":
             libros = Libro.objects.filter(titulo__icontains=searched)
