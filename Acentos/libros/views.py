@@ -39,7 +39,8 @@ def detalles(request, titulo):
         newComent = Resena.objects.create(comentario=request.POST.get('newcoment'),puntuacion=aux,libro_id=libroInstance, cliente_id=request.user.cliente)
         newComent.save()
     else:
-        messages.error(request,'Logueateee putooo')
+        #messages.error(request,'Logueateee putooo')
+        pass
 
     libro = Libro.objects.filter(url_libro__exact=titulo)
     libro = list(libro.values())

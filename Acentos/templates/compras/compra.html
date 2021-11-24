@@ -24,7 +24,7 @@
                         <div>
                                 <select name='MDE' id='MDE'>
                                     <option value='DEFAULT' hidden>Métodos de envío</option>
-                                    <option value='CE'>Recoger en tienda</option>
+                                    <option value='RT'>Recoger en tienda</option>
                                     <option value='EO'><button type="submit">Envío</button></option>
                                 </select>
                             {% if a == 2 %}
@@ -42,26 +42,26 @@
                                     <input type="text" class="camposT" name="address" placeholder="Tú dirección">
                                 </div>
                             </div>
-                        {% endif %}
+                            {% endif %}
                         </div>
                         </div>
                 </div>
                 <h3>Método de pago</h3>
                 <label for="fname" id="MDP">Métodos disponibles</label>
                     <label class="Txt">
-                        <input type="checkbox" name="MDP" value="opcionTC"> Pago con tarjeta credito
+                        <input type="checkbox" name="MDPCT" value="opcionTC"> Pago con tarjeta credito
                         <i class="fas fa-credit-card" style="color:#FA9400"></i>
                     </label>
                     <label class="Txt">
-                        <input type="checkbox" name="MDP" value="opcionCE"> Pago contra entrega
+                        <input type="checkbox" name="MDPCE" value="opcionCE"> Pago contra entrega
                         <i class="fas fa-money-bill-wave" style="color:green;"></i>
                     </label>
                     <label class="Txt">
-                        <input type="checkbox" name="MDP" value="opcionTD"> Pago con tarjeta débito
+                        <input type="checkbox" name="MDPCD" value="opcionTD"> Pago con tarjeta débito
                         <i class="fas fa-money-check" style="color:#FA3500"></i>
                     </label>
                     <label class="Txt">
-                        <input type="checkbox" name="MDP" value="opcionPP"> Pago por Paypal
+                        <input type="checkbox" name="MDPCP" value="opcionPP"> Pago por Paypal
                         <i class="fab fa-cc-paypal" style="color:blue;"></i> 
                     </label>
                 <input type="submit" value="Realizar compra" class="btn">

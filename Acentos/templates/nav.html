@@ -10,7 +10,7 @@
         <li><a href="{% url 'novedades:home' %}" class="hiperMenu">Inicio</a></li>
         <li><a href="{% url 'busquedas:librosAll' %}" class="hiperMenu">Libros</a></li>
         <li><a href="{% url 'clientes:solicitudReserva' %}" class="hiperMenu">Solicitudes</a></li>
-        <li><a href="#" class="hiperMenu">Bonos</a></li>
+        <li><a href="#" class="hiperMenu" hidden="true">Bonos</a></li>
     </ul>
         <form action="{% url 'busquedas:resultados' %}" method="POST" class="busquedad-componentes">
             {% csrf_token %}
