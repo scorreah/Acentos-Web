@@ -1,0 +1,87 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls static admin_list %}
+{% block extrahead %}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+{% block content %}
+    <h1>Graphs:</h1>
+    {% regroup cl.queryset|dictsort:"fecha_compra" by get_fecha_compra_display as fecha_compra_list %}
+    {% for compra in fecha_compra_list %}<p id ="list">{{ compra.list }} </p>{% endfor %}
+    <hr>
+    <div id = "container-line" ></div>
+    <script type="application/javascript">
+        var lista = document.getElementById("list").innerHTML;
+        console.log(lista + " JAJJAA");
+        var graphline = Highcharts.chart('container-line', {
+        title: {
+            text: 'Crecimiento de ventas mensual'
+        },
+        xAxis: {
+            categories: [
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre'
+                ],
+                crosshair: true
+        },
+        yAxis: {
+            title: {
+                text: 'Cantidad de ventas'
+            },
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        tooltip: {
+            pointFormat: ' Cantidad de ventas mensuales <b>{point.y:,.0f}</b><br/> '
+        },
+        series: [{
+            name: '2018',
+            data: [14, 78, 66, 53, 42, 33, 21, 12, 49, 38, 50, 33]
+        },
+        {
+            name: '2019',
+            data: [33, 30, 14, 30, 45, 53, 13, 14, 32, 71, 57, 40]
+        },{
+            name: '2020',
+            data: [42, 54, 45, 31, 29, 48, 19, 30, 39, 46, 38, 20]
+        },{
+            name: '2021',
+            data: [18, 34, 45, 62, 42, 31, 18, 29, 37, 58, 27]
+        },],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+    </script>
+    <hr>
+    {{ block.super }}
+{% endblock %}

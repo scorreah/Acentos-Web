@@ -17,6 +17,10 @@ class Compra(models.Model):
 
     cliente = models.ForeignKey('clientes.Cliente', on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        texto = "Compra '{0}' (On {1}/{2} by {3})"
+        return texto.format(self.pk, self.fecha_compra.year, self.fecha_compra.month, self.cliente)
+
     class Meta:
         db_table = "Compra"
 
