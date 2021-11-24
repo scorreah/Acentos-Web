@@ -87,8 +87,7 @@ def anadirCarrito(request, titulo):
         libro.save()
     else:
         user.carrito.libros.add(libroInstance)
-
-    return redirect ('novedades:home')
+    return ('compras:carrito')
 
 @login_required
 def eliminarCarrito(request, titulo):
@@ -99,6 +98,31 @@ def eliminarCarrito(request, titulo):
     carrito = Carrito.objects.get(cliente__exact=user)
     libroEliminar = LibroCarrito.objects.filter(carrito_id__exact=carrito).filter(libro_id__exact=libroInstance)
     libroEliminar.delete()
+    return redirect ('compras:carrito')
+
+
+@login_required
+def sumarCantidad(request,titulo):
+    libroInstance = Libro.objects.get(titulo__exact=titulo)
+    userInstance = request.user 
+    user = Cliente.objects.get(user__exact=userInstance)
+    carrito = Carrito.objects.get(cliente__exact=user)
+    libro = LibroCarrito.objects.filter(carrito_id__exact=carrito).get(libro_id__exact=libroInstance)
+    libro.cantidad += 1
+    libro.save()
+    return redirect ('compras:carrito')
+
+
+@login_required
+def restarCantidad(request,titulo):
+    libroInstance = Libro.objects.get(titulo__exact=titulo)
+    userInstance = request.user 
+    user = Cliente.objects.get(user__exact=userInstance)
+    carrito = Carrito.objects.get(cliente__exact=user)
+    libro = LibroCarrito.objects.filter(carrito_id__exact=carrito).get(libro_id__exact=libroInstance)
+    if libro.cantidad > 1:
+        libro.cantidad -= 1
+        libro.save()
     return redirect ('compras:carrito')
 
 

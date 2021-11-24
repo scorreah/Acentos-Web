@@ -28,9 +28,15 @@
                     </div>
                     <div class="agregarCantidad">
                         <div class="num-in">
-                            <a herf="{% url 'busquedas:librosAll' %}" class="btnAD"><i class="fas fa-minus"></i></a>
-                            <span type="text" class="in-num" value="1" min="1">1</span>
-                            <a herf="#" class="btnAD"><i class="fas fa-plus"></i></a>
+                            <form action="{%url 'compras:restarCantidad' titulo=item.libro_id.titulo%}" method='POST'>
+                                {% csrf_token %}
+                                <button type="sumbit" class="btnAD"><i class="fas fa-minus"></i></button>
+                                <span type="text" class="in-num" value="1" min="1">{{item.cantidad}}</span>
+                            </form>
+                            <form action="{%url 'compras:sumarCantidad' titulo=item.libro_id.titulo%}" method='POST'>
+                                    {% csrf_token %}
+                                    <button type="sumbit" class="btnAD"><i class="fas fa-plus"></i></button>
+                            </form>
                         </div>
                     </div>
                     <form action="" class="">
